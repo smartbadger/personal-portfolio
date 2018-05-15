@@ -51,13 +51,24 @@
   position: relative;
 }
 
+#hook {
+  animation: move-hook 3s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
 .cable {
   stroke-width: 1;
   stroke: black;
+  stroke-dasharray: 600;
+  stroke-dashoffset: -380;
+  animation: move-cable 3s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+
 }
 
 .trolly-movement {
-  animation: move-trolly 10s infinite;
+  //animation: move-trolly 10s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
@@ -78,6 +89,35 @@
   }
 }
 
+@keyframes move-cable {
+  0% {
+    stroke-dashoffset: -380;
+  }
+  40%{
+    stroke-dashoffset: -380;
+  }
 
+  60%{
+    stroke-dashoffset: -380;
+  }
+  100% {
+    stroke-dashoffset: -40;
+  }
+}
 
+@keyframes move-hook {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  40%{
+    transform: translateX(0) translateY(0);
+  }
+
+  60%{
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(0) translateY(340px);
+  }
+}
 
