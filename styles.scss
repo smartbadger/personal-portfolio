@@ -21,12 +21,30 @@
   }
   .svg-image, .light-wrapper {
     position: absolute;
-    bottom: -5px;
+    bottom: -7px;
     left: 0;
     right: 0;
     margin: auto;
     width: 80%;
     max-height: 75vh;
+
+    &.background-left {
+      width: 60%;
+      margin-left: -36px;
+      transform: scaleX(-1);
+      bottom: -15px;
+    }
+
+    &.background-right {
+      margin-right: 0;
+    }
+    &.background {
+      background: url("assets/background.svg");
+      width: 100%;
+      background-repeat: repeat-x;
+      height: 15vh;
+    }
+  
 
   }
   .light-wrapper {
@@ -52,10 +70,11 @@
     height: 100%;
     width: 80%;
     left: 0;
-    bottom: -5px;
+    bottom: -7px;
     right: 0;
     margin: auto;
     max-height: calc(80vw / 1.33);
+    margin-right: 0;
   }
 }
 
@@ -77,6 +96,7 @@
     top: 0;
     bottom: 0;
 }
+
 .light {
   &.red {
     visibility: visible;
@@ -84,15 +104,19 @@
     width: 1px;
     height: 1px;
     box-shadow: 0 0 5px 5px #ff1818;
+    background-color: #ff1818;
     animation: strobe 3s steps(2, start) infinite;
     animation-direction: alternate;
   }
 
 }
-
+  .st0{fill:#BABBBC;}
+  .st1{fill:#3B3A3C;}
+  .st2{fill:#121210;}
+  .st3{fill:none;stroke:#211C1D;stroke-width:2.16;stroke-miterlimit:22.926;}
 .hook {
   
-  animation: move-hook 30s infinite;
+  animation: move-hook 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
@@ -101,15 +125,15 @@
   stroke: black;
   stroke-dasharray: 650;
   stroke-dashoffset: 0;
-  animation: move-cable 30s infinite,
-             move-trolly 30s infinite;
+  animation: move-cable 45s infinite,
+             move-trolly 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 
 }
 
 .trolly-movement {
-  animation: move-trolly 30s infinite;
+  animation: move-trolly 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
