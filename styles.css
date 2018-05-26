@@ -24,20 +24,35 @@
     margin: auto;
     width: 80%;
     max-height: 75vh; }
-    .sky .svg-image.background-left, .sky .light-wrapper.background-left {
-      width: 60%;
-      margin-left: -36px;
-      transform: scaleX(-1);
-      bottom: -15px; }
-    .sky .svg-image.background-right, .sky .light-wrapper.background-right {
-      margin-right: 0; }
-    .sky .svg-image.background, .sky .light-wrapper.background {
-      background: url("assets/background.svg");
-      width: 100%;
-      background-repeat: repeat-x;
-      height: 15vh; }
+  .sky .background-left {
+    width: 60%;
+    margin-left: -36px;
+    transform: scaleX(-1);
+    bottom: -15px; }
+  .sky .background-right {
+    margin-right: 0; }
+  .sky .background {
+    width: 100%;
+    margin: 0 -20px;
+    margin-bottom: -10px; }
+  .sky .background-grid {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    top: 0;
+    align-items: flex-end; }
   .sky .light-wrapper {
     height: 100%; }
+  .sky .weld-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0; }
 
 .ground {
   background: black;

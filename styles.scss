@@ -28,27 +28,62 @@
     width: 80%;
     max-height: 75vh;
 
-    &.background-left {
-      width: 60%;
-      margin-left: -36px;
-      transform: scaleX(-1);
-      bottom: -15px;
-    }
 
-    &.background-right {
-      margin-right: 0;
-    }
-    &.background {
-      background: url("assets/background.svg");
-      width: 100%;
-      background-repeat: repeat-x;
-      height: 15vh;
-    }
-  
-
+  }
+  .background-left {
+    width: 60%;
+    margin-left: -36px;
+    transform: scaleX(-1);
+    bottom: -15px;
+  }
+  .background-right {
+    margin-right: 0;
+  }
+  .background {
+    width: 100%;
+    margin: 0 -20px;
+    margin-bottom: -10px;
+    // &.one {
+    //   background: url("assets/background-1.svg");
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
+    // &.two {
+    //   background: url("assets/background-2.svg");
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
+    // &.three {
+    //   background: url("assets/background-3.svg");
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
+    // &.four {
+    //   background: url("assets/background-4.svg");
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
+  }
+  .background-grid {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    top: 0;
+    align-items: flex-end;
   }
   .light-wrapper {
     height: 100%;
+  }
+  .weld-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
   }
 }
 
