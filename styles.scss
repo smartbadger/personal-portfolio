@@ -8,11 +8,13 @@
 }
 
 .sky {
-  position: relative;
   background: linear-gradient(to bottom, #000508 0%, #163C52 25%, #4F4F47 40%, #C5752D 53%, #B7490F 85%, #2F1107 100%);
   width: 100%;
   height: 75vh;
 
+  .component-wrapper {
+    position: relative;
+  }
   .sun {
     position: absolute;
     width: 200px;
@@ -22,7 +24,7 @@
     border-radius: 50%;
     background: radial-gradient(circle, #ffe483 0%, #ffc700 10%, #ff8117 11%, #f5740300 35%, #f5740300 100%);
   }
-  .svg-image, .light-wrapper {
+  .svg-image {
     position: absolute;
     bottom: -7px;
     left: 0;
@@ -79,8 +81,14 @@
     top: 0;
     align-items: flex-end;
   }
+  .height-limit {
+    max-height: 62vh;
+  }
   .light-wrapper {
-    height: 100%;
+    position: relative;
+    padding-bottom: calc((768/1024) * 82%);
+    height: 0;
+
   }
   .weld-wrapper {
     position: absolute;
@@ -103,6 +111,8 @@
   width: 100%;
   padding: 0;
   padding-bottom: 75vh;
+  margin: auto;
+  margin-left: -10%;
 
   svg{
     position: absolute;
@@ -122,18 +132,13 @@
 }
 
 .light-bar {
-    max-height: 75vh;
-    transform: rotate(3.8deg);
+    transform: rotate(4deg) translateX(40px);
     display: flex;
-    justify-content: space-around;
-    width: 90%;
+    justify-content: space-between;
+    width: 85%;
     position: absolute;
-    height: 1px;
-    margin: auto 8% 62% auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    height: 100%;
+    bottom: 11px;
 }
 
 .light {
@@ -146,6 +151,11 @@
     background-color: #ff1818;
     animation: strobe 3s steps(2, start) infinite;
     animation-direction: alternate;
+  }
+  &.top{
+    position: absolute;
+    top: -13%;
+    right: 30%;
   }
 
 }
