@@ -3,6 +3,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+.page-wrapper {
+      overflow: hidden;
+}
 
 .sky {
   position: relative;
@@ -43,6 +46,7 @@
     width: 100%;
     margin: 0 -20px;
     margin-bottom: -10px;
+    // Keep this for now...
     // &.one {
     //   background: url("assets/background-1.svg");
     //   background-repeat: no-repeat;

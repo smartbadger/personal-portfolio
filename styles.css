@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box; }
 
+.page-wrapper {
+  overflow: hidden; }
+
 .sky {
   position: relative;
   background: linear-gradient(to bottom, #000508 0%, #163C52 25%, #4F4F47 40%, #C5752D 53%, #B7490F 85%, #2F1107 100%);
