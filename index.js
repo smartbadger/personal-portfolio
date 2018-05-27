@@ -16,17 +16,20 @@ const sparkGenerator = {
         this.spark()
     },
 
-    getRandomInt: function(min, max) {
+    getRandomInt: function(min, max, string = true) {
       min = Math.ceil(min);
       max = Math.floor(max);
-      return String(Math.floor(Math.random() * (max - min)) + min);
+      if(string){
+        return String(Math.floor(Math.random() * (max - min)) + min)
+      }
+      return Math.floor(Math.random() * (max - min)) + min
     },
 
     spark: function() {
        const sparkElements = document.querySelectorAll('.spark')
        sparkElements.forEach(spark => {
-        sparkCount = 10
-        for( var i = 0; i <=10; i++){
+        sparkCount = 50
+        for( var i = 0; i <=sparkCount; i++){
             sparkDiv = sparkGenerator.generateSpark()
             spark.appendChild(sparkDiv)
         }
@@ -39,7 +42,7 @@ const sparkGenerator = {
         sparkDiv.style.left =  sparkGenerator.getRandomInt(0,100) + "px"
         sparkDiv.style.width = sparkGenerator.getRandomInt(1,2) + "px"
         sparkDiv.style.height = sparkGenerator.getRandomInt(4,7) + "px"
-        sparkDiv.style.animationDelay = sparkGenerator.getRandomInt(0,5) + "s" 
+        sparkDiv.style.animationDelay = String(sparkGenerator.getRandomInt(0,9)/10) + "s" 
         return sparkDiv   
     }
 }

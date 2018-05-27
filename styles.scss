@@ -212,12 +212,11 @@
 
   
 .particle{
-  opacity:0;
+  opacity: 1;
   position: absolute;
-  animation: sparks 8s infinite;
-  &.c1 {
-     background-color:rgba(255, 251, 209, 1);
-  }
+  animation: sparks 1s infinite;
+  background-color:rgba(255, 251, 209, 1);
+  
 }
 
 @keyframes welding {
@@ -241,28 +240,8 @@
   100%{opacity: 0;}
 }
 @keyframes sparks {
-  0%{opacity:0;
-      transform:translateY(0%) rotate(0deg);}
-  1%{opacity: 1;}
-  2%{opacity: 0;}
-  3%{opacity: 1;}
-  4%{opacity: 0;}
-  5%{opacity: 1;}
-  9%{opacity: 1;}
-  11%{opacity: 1;}
-  12%{opacity: 0;}
-  13%{opacity: 1;}
-  15%{opacity: 1;}
-  27%{opacity: 1;}
-  29%{opacity: 1;}
-  69%{opacity: 1;}
-  70%{opacity: 0;}
-  90%{opacity: 0;}
-  97%{opacity: 0;}
-  100%{
-    opacity: 0;
-    transform:translateY(2000%) rotate(0deg);
-  }
+  0%{ transform:translateY(0%) rotate(0deg);}
+  100%{ transform:translateY(2000%) rotate(0deg);}
 }
 @keyframes strobe {
   to {
