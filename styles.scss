@@ -183,13 +183,16 @@
   animation-direction: alternate;
 }
 .spark {
+  
   position: relative;
   width: 10%;
+  margin-top: -20px;
+  animation-timing-function: linear;
 }
 
 .weld-container{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     position: absolute;
     &:first-child {
       left: 84%;
@@ -203,8 +206,9 @@
 }
 
 .weld {
-  width: 15px;
-  height: 15px;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   animation: welding 8s infinite;
   background: radial-gradient(
@@ -222,16 +226,18 @@
 
   
 .particle{
-  opacity: 1;
+  opacity: 0;
   position: absolute;
   background-color:rgba(255, 251, 209, 1);
   
   &.negative-X {
-    animation: sparks-neg-X 1s infinite;
+    animation: sparks-neg-X .7s infinite,
+               welding 8s infinite;
   }
 
   &.positive-X{
-    animation: sparks-pos-X 1s infinite;
+    animation: sparks-pos-X .7s infinite,
+               welding 8s infinite;
   }
   
 }
@@ -243,26 +249,24 @@
   3%{opacity: 1;}
   4%{opacity: 0;}
   5%{opacity: 1;}
-  9%{opacity: 1;}
   11%{opacity: 1;}
   12%{opacity: 0;}
   13%{opacity: 1;}
-  15%{opacity: 1;}
-  27%{opacity: 1;}
-  29%{opacity: 1;}
   69%{opacity: 1;}
   70%{opacity: 0;}
-  90%{opacity: 0;}
-  97%{opacity: 0;}
   100%{opacity: 0;}
 }
 @keyframes sparks-neg-X {
-  0%{ transform:translateY(0%) rotate(0deg);}
-  100%{ transform:translateY(2000%) translateX(-10px)rotate(0deg);}
+  0%{ opacity: 1; transform:translateY(0%) rotate(0deg);}
+  95% {
+    opacity: 1;
+  }
+  100%{ opacity: 0;transform:translateY(2250%) translateX(-10px)rotate(0deg);}
 }
 @keyframes sparks-pos-X {
-  0%{ transform:translateY(0%) rotate(0deg);}
-  100%{ transform:translateY(2000%) translateX(10px)rotate(0deg);}
+  0%{ opacity: 1;transform:translateY(0%) rotate(0deg);}
+  93% {opacity: 1;}
+  100%{ opacity: 0;transform:translateY(2250%) translateX(10px)rotate(0deg);}
 }
 @keyframes strobe {
   to {
