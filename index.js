@@ -28,7 +28,7 @@ const sparkGenerator = {
     spark: function() {
        const sparkElements = document.querySelectorAll('.spark')
        sparkElements.forEach(spark => {
-        sparkCount = 50
+        sparkCount = 25
         for( var i = 0; i <=sparkCount; i++){
             sparkDiv = sparkGenerator.generateSpark()
             spark.appendChild(sparkDiv)
@@ -38,8 +38,13 @@ const sparkGenerator = {
     generateSpark: function() {
         let sparkDiv = document.createElement('div')
         sparkDiv.classList = 'particle'
+        if(sparkGenerator.getRandomInt(1,3) == 2){
+          sparkDiv.classList = sparkDiv.classList + " negative-X"
+        } else {
+          sparkDiv.classList = sparkDiv.classList + " positive-X"
+        }
         sparkDiv.style.top = sparkGenerator.getRandomInt(10,50) + "px"
-        sparkDiv.style.left =  sparkGenerator.getRandomInt(0,100) + "px"
+        sparkDiv.style.left =  sparkGenerator.getRandomInt(0,25) + "px"
         sparkDiv.style.width = sparkGenerator.getRandomInt(1,2) + "px"
         sparkDiv.style.height = sparkGenerator.getRandomInt(4,7) + "px"
         sparkDiv.style.animationDelay = String(sparkGenerator.getRandomInt(0,9)/10) + "s" 
