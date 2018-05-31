@@ -39,7 +39,7 @@ const sparkGenerator = {
        sparkElements.forEach(spark => {
 
         let sibling = sparkGenerator.getSibling(spark)
-        let baseAnimationDelay = sparkGenerator.getRandomInt(3,8)
+        let baseAnimationDelay = sparkGenerator.getRandomInt(1,15)
         console.log(baseAnimationDelay)
         console.log(sibling)
         sibling[0].style.animationDelay = String(baseAnimationDelay) +"s"
@@ -56,7 +56,7 @@ const sparkGenerator = {
         // set standard properties
         sparkDiv.classList = 'particle'
         sparkDiv.style.top = sparkGenerator.getRandomInt(10,30) + "px"
-        sparkDiv.style.left =  sparkGenerator.getRandomInt(-3,10) + "px"
+        sparkDiv.style.left =  sparkGenerator.getRandomInt(2,5) + "px"
         sparkDiv.style.width = sparkGenerator.getRandomInt(1,2) + "px"
         sparkDiv.style.height = sparkGenerator.getRandomInt(4,7) + "px"
         // make some uniqness
