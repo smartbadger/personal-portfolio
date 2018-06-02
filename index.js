@@ -1,19 +1,9 @@
-//require('core-js')
 
-// function sparks() {
-//    $.each($(".spark"), function(){
-//       var confetticount = ($(this).width()/10)*3;
-//       for(var i = 0; i <= confetticount; i++) {
-//         console.log('append')
-//          $(this).append('<span class="particle c1" style="top:' + $.rnd(10,50) + '%; left:' + $.rnd(0,100) + '%;width:' + $.rnd(1,2) + 'px; height:' + $.rnd(4,7) + 'px;animation-delay: ' + ($.rnd(0,30)/10) + 's;"></span>');
-//       }
-//    });
-// }
-
-const sparkGenerator = {
+const animationManager = {
 
     init: function() {
         this.buildElements()
+        this.startIntervalCounter()
     },
     getRandomInt: function(min, max, string = true) {
       min = Math.ceil(min);
@@ -32,8 +22,7 @@ const sparkGenerator = {
 
         // create weld item first
         let sibling = weldElements[index]
-        console.log(sibling)
-        let baseAnimationDelay = sparkGenerator.getRandomInt(1,15)
+        let baseAnimationDelay = animationManager.getRandomInt(1,15)
         let weld = document.createElement('div')
         weld.classList = "weld"
         weld.style.animationDelay = String(baseAnimationDelay) + "s"
@@ -42,7 +31,7 @@ const sparkGenerator = {
         // sparks start here
         sparkCount = 25
         for( var i = 0; i <=sparkCount; i++){
-            sparkDiv = sparkGenerator.generateSpark(baseAnimationDelay)
+            sparkDiv = animationManager.generateSpark(baseAnimationDelay)
             spark.appendChild(sparkDiv)
         }
        })
@@ -51,26 +40,29 @@ const sparkGenerator = {
         let sparkDiv = document.createElement('div')
         // set standard properties
         sparkDiv.classList = 'particle'
-        sparkDiv.style.top = sparkGenerator.getRandomInt(25,35) + "px"
-        sparkDiv.style.left =  sparkGenerator.getRandomInt(0,5) + "px"
-        sparkDiv.style.width = sparkGenerator.getRandomInt(1,2) + "px"
-        sparkDiv.style.height = sparkGenerator.getRandomInt(4,7) + "px"
+        sparkDiv.style.top = animationManager.getRandomInt(25,35) + "px"
+        sparkDiv.style.left =  animationManager.getRandomInt(0,5) + "px"
+        sparkDiv.style.width = animationManager.getRandomInt(1,2) + "px"
+        sparkDiv.style.height = animationManager.getRandomInt(4,7) + "px"
         // make some uniqness
-        if(sparkGenerator.getRandomInt(1,3) == 2){
+        if(animationManager.getRandomInt(1,3) == 2){
           sparkDiv.classList = sparkDiv.classList + " negative-X"
         } else {
           sparkDiv.classList = sparkDiv.classList + " positive-X"
         }
         //create a base delay
-        let combinedDelay = (sparkGenerator.getRandomInt(0,9)/10) + parseFloat(delay)
+        let combinedDelay = (animationManager.getRandomInt(0,9)/10) + parseFloat(delay)
         sparkDiv.style.animationDelay = String(combinedDelay) + "s" 
         return sparkDiv   
     },
-    generateWeld: function() {
-
+    startIntervalCounter: function() {
+      setInterval( () => {
+        materialSVG = document.getElementById('material-group')
+        materialSVG.classList.toggle('hidden')
+      }, 45000)
     }
 }
 document.addEventListener("DOMContentLoaded", evt => {
-	sparkGenerator.init()
+	animationManager.init()
 })
 

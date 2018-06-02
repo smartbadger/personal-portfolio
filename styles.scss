@@ -1,7 +1,12 @@
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+path {
+  stroke: #000000;
+  fill: #000000;
 }
 .page-wrapper {
       overflow: hidden;
@@ -48,27 +53,6 @@
     width: 100%;
     margin: 0 -20px;
     margin-bottom: -10px;
-    // Keep this for now...
-    // &.one {
-    //   background: url("assets/background-1.svg");
-    //   background-repeat: no-repeat;
-    //   background-size: cover;
-    // }
-    // &.two {
-    //   background: url("assets/background-2.svg");
-    //   background-repeat: no-repeat;
-    //   background-size: cover;
-    // }
-    // &.three {
-    //   background: url("assets/background-3.svg");
-    //   background-repeat: no-repeat;
-    //   background-size: cover;
-    // }
-    // &.four {
-    //   background: url("assets/background-4.svg");
-    //   background-repeat: no-repeat;
-    //   background-size: cover;
-    // }
   }
   .background-grid {
     display: flex;
@@ -155,30 +139,58 @@
   }
 
 }
-  .st0{fill:#BABBBC;}
-  .st1{fill:#3B3A3C;}
-  .st2{fill:#121210;}
-  .st3{fill:none;stroke:#211C1D;stroke-width:2.16;stroke-miterlimit:22.926;}
-.hook {
-  
-  animation: move-hook 45s infinite;
+.material {
+  &.hidden {
+    visibility: hidden;
+  }
+  path {
+  animation: move-trolly-components 45s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  }
+}
+.hook {  
+  animation: move-trolly-components 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
 .cable {
   stroke-width: 1;
   stroke: black;
-  stroke-dasharray: 650;
-  stroke-dashoffset: 0;
+  stroke-dasharray: 485;
+  stroke-dashoffset: 485;
   animation: move-cable 45s infinite,
-             move-trolly 45s infinite;
+             move-trolly-components 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 
 }
+.material,
+.trolly-movement, 
+.cable,
+.hook {
+  --transX1: -55%;
+  --transX2: -50%;
+  --transX3: -5%;
+  --transX4: -5%;
 
+  --transY1: -6.5%;
+  --transY2: -6.5%;
+  --transY3: 0%;
+  --transY4: 0%;
+
+  --scale1: 1.1;
+  --scale2: 1;
+}
+.hook,
+.material {
+  --transY1: 55%;
+  --transY2: -6.5%;
+  --transY3: 0%;
+  --transY4: 55%;
+}
 .trolly-movement {
-  animation: move-trolly 45s infinite;
+  animation: move-trolly-components 45s infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
@@ -223,8 +235,6 @@
   );
   
 }
-
-  
 .particle{
   opacity: 0;
   position: absolute;
@@ -234,7 +244,6 @@
     animation: sparks-neg-X .7s infinite,
                welding 8s infinite;
   }
-
   &.positive-X{
     animation: sparks-pos-X .7s infinite,
                welding 8s infinite;
@@ -243,30 +252,30 @@
 }
 
 @keyframes welding {
-  0%{opacity: 0;}
-  1%{opacity: 1;}
-  2%{opacity: 0;}
-  3%{opacity: 1;}
-  4%{opacity: 0;}
-  5%{opacity: 1;}
-  11%{opacity: 1;}
-  12%{opacity: 0;}
-  13%{opacity: 1;}
-  59%{opacity: 1;}
-  60%{opacity: 0;}
+  0%  {opacity: 0;}
+  1%  {opacity: 1;}
+  2%  {opacity: 0;}
+  3%  {opacity: 1;}
+  4%  {opacity: 0;}
+  5%  {opacity: 1;}
+  11% {opacity: 1;}
+  12% {opacity: 0;}
+  13% {opacity: 1;}
+  59% {opacity: 1;}
+  60% {opacity: 0;}
   100%{opacity: 0;}
 }
 @keyframes sparks-neg-X {
-  0%{ opacity: 1; transform:translateY(0%) rotate(0deg);}
+  0%{ opacity: 1; transform:translateY(0%)}
   95% {
     opacity: 1;
   }
-  100%{ opacity: 0;transform:translateY(1500%) translateX(-5px)rotate(0deg);}
+  100%{ opacity: 0;transform:translateY(1500%) translateX(-5px)}
 }
 @keyframes sparks-pos-X {
   0%{ opacity: 1;transform:translateY(0%) rotate(0deg);}
   93% {opacity: 1;}
-  100%{ opacity: 0;transform:translateY(1500%) translateX(5px)rotate(0deg);}
+  100%{ opacity: 0;transform:translateY(1500%) translateX(5px);}
 }
 @keyframes strobe {
   to {
@@ -274,37 +283,21 @@
     opacity: 0;
   }
 }
-@keyframes move-trolly {
-  0% { transform: translateX(-55%) translateY(-6.5%) scale(1.1);}
-  10% { }
-  25% { transform: translateX(-50%) translateY(-6.5%) scale(1.1); }
-  40% { }
-  //50% { transform: translateX(-50%) translateY(-6.5%) scale(1.1);}
-  60% { }
-  75% { transform: translateX(-5%) translateY(0) scale(1);}
-  80% { }
-  90% { }
-  100% { transform: translateX(-5%) translateY(0) scale(1);}
-}
-@keyframes move-cable {
-  0% { stroke-dashoffset: 0;}
-  25% { stroke-dashoffset: -430;}
-  50% { stroke-dashoffset: -430;}
-  75% { stroke-dashoffset: -430;}
-  100% { stroke-dashoffset: 0;}
+
+@keyframes move-trolly-components {
+  0%   { transform: translateX(var(--transX1)) translateY(var(--transY1)) scale(var(--scale1));}
+  25%  { transform: translateX(var(--transX2)) translateY(var(--transY2)) scale(var(--scale1)); }
+  75%  { transform: translateX(var(--transX3))  translateY(var(--transY3)) scale(var(--scale2));}
+  100% { transform: translateX(var(--transX4))  translateY(var(--transY4)) scale(var(--scale2));}
 }
 
-@keyframes move-hook {
-  0% { transform: translateX(-55%) translateY(55%) scale(1.1);}
-  10% { }
-  25% { transform: translateX(-50%) translateY(-6.5%) scale(1.1); }
-  40% { }
-  //50% { transform: translateX(-50%) translateY(-6.5%) scale(1.1);}
-  60% { }
-  75% { transform: translateX(-5%) translateY(0) scale(1);}
-  80% { }
-  90% { }
-  100% { transform: translateX(-5%) translateY(55%) scale(1);}
+@keyframes move-cable {
+  0% { stroke-dashoffset: 970;}
+  25% { stroke-dashoffset: 543;}
+  75% { stroke-dashoffset: 543;}
+  100% { stroke-dashoffset: 970;}
 }
+
+
 
 

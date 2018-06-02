@@ -1,0 +1,17 @@
+<svg width="1024" height="768" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="1026" height="770" id="canvas_background" fill="none"/>
+ </g>
+
+ <g>
+  <title>Layer 1</title>
+  <line fill="white" stroke-width="0.4" x1="648.14115" y1="232.389237" x2="677.167701" y2="248.14144" id="svg_4" stroke-linejoin="null" stroke-linecap="null" stroke="#000000"/>
+  <line fill="white" stroke-width="0.4" x1="648.495128" y1="232.566228" x2="669.55708" y2="248.318433" id="svg_6" stroke-linejoin="null" stroke-linecap="null" stroke="#000000"/>
+  <line fill="white" stroke-width="0.4" x1="648.14115" y1="232.74322" x2="619.999999" y2="248.141441" id="svg_7" stroke-linejoin="null" stroke-linecap="null" stroke="#000000"/>
+  <line fill="white" stroke-width="0.4" x1="648.495127" y1="232.566228" x2="626.991154" y2="247.964449" id="svg_8" stroke-linejoin="null" stroke-linecap="null" stroke="#000000"/>
+  <ellipse fill="null" stroke-width="null" stroke-opacity="null" fill-opacity="null" cx="648.495138" cy="233" id="svg_13" rx="1.061946" ry="1.061946" stroke="null"/>
+  <ellipse fill="null" stroke="null" stroke-width="null" stroke-opacity="null" fill-opacity="null" cx="648.229651" cy="232.477735" id="svg_14" rx="0.088496" ry="0.265487"/>
+  <rect fill="#000000" stroke-width="0.4" x="620.176572" y="248.141442" width="56.991115" height="17.168131" id="svg_16" stroke="#000000"/>
+ </g>
+</svg>
