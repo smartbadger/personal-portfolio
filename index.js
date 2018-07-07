@@ -15,8 +15,8 @@ const animationManager = {
     },
 
     buildElements: function() {
-       const sparkElements = document.querySelectorAll('.spark')
-       const weldElements = document.querySelectorAll('.weld-container')
+       const sparkElements = document.querySelectorAll('.spark__item')
+       const weldElements = document.querySelectorAll('.weld__container')
 
        sparkElements.forEach((spark, index) => {
 
@@ -24,7 +24,7 @@ const animationManager = {
         let sibling = weldElements[index]
         let baseAnimationDelay = animationManager.getRandomInt(1,15)
         let weld = document.createElement('div')
-        weld.classList = "weld"
+        weld.classList = "weld__item"
         weld.style.animationDelay = String(baseAnimationDelay) + "s"
         sibling.appendChild(weld)
 
@@ -46,9 +46,9 @@ const animationManager = {
         sparkDiv.style.height = animationManager.getRandomInt(4,7) + "px"
         // make some uniqness
         if(animationManager.getRandomInt(1,3) == 2){
-          sparkDiv.classList = sparkDiv.classList + " negative-X"
+          sparkDiv.classList = sparkDiv.classList + " particle__negative--X"
         } else {
-          sparkDiv.classList = sparkDiv.classList + " positive-X"
+          sparkDiv.classList = sparkDiv.classList + " particle__positive--X"
         }
         //create a base delay
         let combinedDelay = (animationManager.getRandomInt(0,9)/10) + parseFloat(delay)

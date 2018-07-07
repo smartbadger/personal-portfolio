@@ -1,0 +1,104 @@
+.light {
+    @include normalize-height;
+    &__bar {
+        transform: rotate(4deg) translateX(40px);
+        display: flex;
+        justify-content: space-between;
+        bottom: -17%;
+        @include set-w-h-p(85%, 100%, absolute);
+    }
+    &__red {
+        visibility: visible;
+        opacity: 1;
+        box-shadow: 0 0 5px 5px #ff1818;
+        background-color: #ff1818;
+        animation: strobe 3s steps(2, start) infinite;
+        animation-direction: alternate;
+        @include set-w-h-p(1px, 1px, relative);
+        &--top {
+            position: absolute;
+            top: 9%;
+            right: 29%;
+        }
+    }
+}
+
+.material path,
+.hook,
+.trolly-movement {
+    animation: move-trolly-components 45s infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.cable {
+    stroke-width: 1;
+    stroke: black;
+    stroke-dasharray: 485;
+    stroke-dashoffset: 485;
+    animation: move-cable 45s infinite, move-trolly-components 45s infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.particle {
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(255, 251, 209, 1);
+    &__negative--X {
+        animation: sparks-neg-X .7s infinite, welding 8s infinite;
+    }
+    &__positive--X {
+        animation: sparks-pos-X .7s infinite, welding 8s infinite;
+    }
+}
+
+.spark {
+    @include normalize-height;
+    &__container {
+        @include set-animation-position;
+    }
+    &__item {
+        position: relative;
+        width: 10%;
+        margin-top: -20px;
+        animation-timing-function: linear;
+    }
+}
+
+.weld {
+    @include normalize-height;
+    &__container {
+        @include set-animation-position;
+    }
+    &__item {
+        opacity: 0;
+        border-radius: 50%;
+        animation: welding 8s infinite;
+        background: radial-gradient( circle, #ffffff 0%, #DDEDFF 25%, #e1ecf9 35%, #cee4ff 40%, rgb(186, 218, 255) 50%, rgba(186, 218, 255, .4) 80%, rgba(186, 218, 255, .1) 100%);
+        @include set-w-h-p(10px, 10px, inherit);
+    }
+} // consider function or mixin
+.material,
+.trolly-movement,
+.cable,
+.hook {
+    --transX1: -55%;
+    --transX2: -50%;
+    --transX3: -5%;
+    --transX4: -5%;
+    --transY1: -6.5%;
+    --transY2: -6.5%;
+    --transY3: 0%;
+    --transY4: 0%;
+    --scale1: 1.1;
+    --scale2: 1;
+}
+
+.hook,
+.material {
+    --transY1: 55%;
+    --transY2: -6.5%;
+    --transY3: 0%;
+    --transY4: 55%;
+}

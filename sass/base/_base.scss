@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+  padding: 0;
+  // set to inherit to make it easier to change
+	box-sizing: inherit;
+}
+// set root font size here
+// set at 10px for easier mental conversion
+html {
+  // actually bad practice, set to percentage is better because it overrides default user font
+  //font-size: 10px;
+
+  // default browser font size is 16px set to 10
+  font-size: 62.5%;
+}
+body {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 400;
+        //font-size: 16px;
+        line-height: 1.7;
+        background: #000;
+        // set for all body elements
+        box-sizing: border-box;
+}
+.hidden {
+  visibility: hidden;
+}

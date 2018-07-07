@@ -1,0 +1,47 @@
+@keyframes sparks-neg-X {
+    0%{ opacity: 1; transform:translateY(0%)}
+    95% {
+      opacity: 1;
+    }
+    100%{ opacity: 0;transform:translateY(1500%) translateX(-5px)}
+  }
+  @keyframes sparks-pos-X {
+    0%{ opacity: 1;transform:translateY(0%) rotate(0deg);}
+    93% {opacity: 1;}
+    100%{ opacity: 0;transform:translateY(1500%) translateX(5px);}
+  }
+  @keyframes strobe {
+    to {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  @keyframes move-trolly-components {
+    0%   { transform: translateX(var(--transX1)) translateY(var(--transY1)) scale(var(--scale1));}
+    25%  { transform: translateX(var(--transX2)) translateY(var(--transY2)) scale(var(--scale1)); }
+    75%  { transform: translateX(var(--transX3))  translateY(var(--transY3)) scale(var(--scale2));}
+    100% { transform: translateX(var(--transX4))  translateY(var(--transY4)) scale(var(--scale2));}
+  }
+
+  @keyframes move-cable {
+    0% { stroke-dashoffset: 970;}
+    25% { stroke-dashoffset: 543;}
+    75% { stroke-dashoffset: 543;}
+    100% { stroke-dashoffset: 970;}
+  }
+
+  @keyframes welding {
+    0%  {opacity: 0;}
+    1%  {opacity: 1;}
+    2%  {opacity: 0;}
+    3%  {opacity: 1;}
+    4%  {opacity: 0;}
+    5%  {opacity: 1;}
+    11% {opacity: 1;}
+    12% {opacity: 0;}
+    13% {opacity: 1;}
+    59% {opacity: 1;}
+    60% {opacity: 0;}
+    100%{opacity: 0;}
+  }

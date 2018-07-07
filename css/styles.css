@@ -1,0 +1,349 @@
+@keyframes sparks-neg-X {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1500%) translateX(-5px);
+  }
+}
+@keyframes sparks-pos-X {
+  0% {
+    opacity: 1;
+    transform: translateY(0%) rotate(0deg);
+  }
+  93% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(1500%) translateX(5px);
+  }
+}
+@keyframes strobe {
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@keyframes move-trolly-components {
+  0% {
+    transform: translateX(var(--transX1)) translateY(var(--transY1)) scale(var(--scale1));
+  }
+  25% {
+    transform: translateX(var(--transX2)) translateY(var(--transY2)) scale(var(--scale1));
+  }
+  75% {
+    transform: translateX(var(--transX3)) translateY(var(--transY3)) scale(var(--scale2));
+  }
+  100% {
+    transform: translateX(var(--transX4)) translateY(var(--transY4)) scale(var(--scale2));
+  }
+}
+@keyframes move-cable {
+  0% {
+    stroke-dashoffset: 970;
+  }
+  25% {
+    stroke-dashoffset: 543;
+  }
+  75% {
+    stroke-dashoffset: 543;
+  }
+  100% {
+    stroke-dashoffset: 970;
+  }
+}
+@keyframes welding {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  11% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+  }
+  13% {
+    opacity: 1;
+  }
+  59% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.light {
+  position: relative;
+  padding-bottom: calc((768/1024) * 100%);
+  height: 0;
+}
+.light__bar {
+  transform: rotate(4deg) translateX(40px);
+  display: flex;
+  justify-content: space-between;
+  bottom: -17%;
+  width: 85%;
+  height: 100%;
+  position: absolute;
+}
+.light__red {
+  visibility: visible;
+  opacity: 1;
+  box-shadow: 0 0 5px 5px #ff1818;
+  background-color: #ff1818;
+  animation: strobe 3s steps(2, start) infinite;
+  animation-direction: alternate;
+  width: 1px;
+  height: 1px;
+  position: relative;
+}
+.light__red--top {
+  position: absolute;
+  top: 9%;
+  right: 29%;
+}
+
+.material path,
+.hook,
+.trolly-movement {
+  animation: move-trolly-components 45s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.cable {
+  stroke-width: 1;
+  stroke: black;
+  stroke-dasharray: 485;
+  stroke-dashoffset: 485;
+  animation: move-cable 45s infinite, move-trolly-components 45s infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.particle {
+  opacity: 0;
+  position: absolute;
+  background-color: #fffbd1;
+}
+.particle__negative--X {
+  animation: sparks-neg-X 0.7s infinite, welding 8s infinite;
+}
+.particle__positive--X {
+  animation: sparks-pos-X 0.7s infinite, welding 8s infinite;
+}
+
+.spark {
+  position: relative;
+  padding-bottom: calc((768/1024) * 100%);
+  height: 0;
+}
+.spark__container {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+}
+.spark__container:first-child {
+  left: 81.2%;
+  top: 50.2%;
+}
+.spark__container:last-child {
+  left: 52%;
+  top: 71.9%;
+}
+.spark__item {
+  position: relative;
+  width: 10%;
+  margin-top: -20px;
+  animation-timing-function: linear;
+}
+
+.weld {
+  position: relative;
+  padding-bottom: calc((768/1024) * 100%);
+  height: 0;
+}
+.weld__container {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+}
+.weld__container:first-child {
+  left: 81.2%;
+  top: 50.2%;
+}
+.weld__container:last-child {
+  left: 52%;
+  top: 71.9%;
+}
+.weld__item {
+  opacity: 0;
+  border-radius: 50%;
+  animation: welding 8s infinite;
+  background: radial-gradient(circle, #ffffff 0%, #DDEDFF 25%, #e1ecf9 35%, #cee4ff 40%, #badaff 50%, rgba(186, 218, 255, 0.4) 80%, rgba(186, 218, 255, 0.1) 100%);
+  width: 10px;
+  height: 10px;
+  position: inherit;
+}
+
+.material,
+.trolly-movement,
+.cable,
+.hook {
+  --transX1: -55%;
+  --transX2: -50%;
+  --transX3: -5%;
+  --transX4: -5%;
+  --transY1: -6.5%;
+  --transY2: -6.5%;
+  --transY3: 0%;
+  --transY4: 0%;
+  --scale1: 1.1;
+  --scale2: 1;
+}
+
+.hook,
+.material {
+  --transY1: 55%;
+  --transY2: -6.5%;
+  --transY3: 0%;
+  --transY4: 55%;
+}
+
+.animation-wrapper {
+  overflow: hidden;
+}
+.animation-wrapper path {
+  stroke: #000000;
+  fill: #000000;
+}
+.animation-wrapper__sky {
+  background: linear-gradient(to bottom, #000508 0%, #163C52 25%, #4F4F47 40%, #C5752D 53%, #B7490F 85%, #2F1107 100%);
+  width: 100%;
+  height: 75vh;
+}
+
+.component {
+  position: relative;
+}
+.component__sun {
+  top: 45%;
+  left: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe483 0%, #ffc700 10%, #ff8117 11%, #f5740300 35%, #f5740300 100%);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+.component__svg--image {
+  width: 80%;
+  height: auto;
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-height: 75vh;
+}
+.component__limit {
+  max-height: 75vh;
+  max-width: 100vh;
+  width: calc((768/1024) * 107%);
+  bottom: 0;
+}
+.component__svg {
+  width: 100%;
+  height: 0;
+  position: relative;
+  padding: 0;
+  padding-bottom: 75vh;
+  margin: auto;
+  margin-left: -10%;
+}
+.component__svg svg {
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  right: 0;
+  margin: auto;
+  max-height: calc(80vw / 1.33);
+  margin-right: 0;
+}
+.component__background--section {
+  width: 100%;
+  margin: 0 -20px;
+  margin-bottom: -10px;
+}
+.component__background--left {
+  width: 60%;
+  margin-left: -36px;
+  transform: scaleX(-1);
+  bottom: -15px;
+}
+.component__background--right {
+  margin-right: 0;
+}
+.component__background--grid {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  display: flex;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  top: 0;
+  align-items: flex-end;
+}
+
+/*# sourceMappingURL=css/styles.css.map */

@@ -3,32 +3,41 @@
 	<head>
 		<meta charset="utf-8">
 		<title> Connor Bailes</title>
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 	</head>
 	<body>
 		<header class="header">
-
+				<svg width="60" height="50" xmlns="http://www.w3.org/2000/svg">
+					<path fill="none" id="canvas_background" d="M-1-1h62v52H-1z"/>
+					<g>
+					  <path stroke="#fff" id="svg_2" fill="none" d="M5.644 4.577h49.712v40.051H5.644z"/>
+					  <text font-family="Euphoria, sans-serif" font-size="24" id="svg_1" y="33.09" x="13.848" stroke-width="0" stroke="#000" fill="#fff">
+						CB
+					  </text>
+					</g>
+				  </svg>
 		</header>
-		<div class="page-wrapper">
-			<div class="sky">
-				<div class="component-wrapper">
-					<div class="sun"></div>
-					<div class="background-grid">
-						<div class="background one"><img class="" src="assets/background-1.svg" /></div>
-						<div class="background two"><img class="" src="assets/background-2.svg" /></div>
-						<div class="background three"><img class="" src="assets/background-3.svg" /></div>
-						<div class="background four"><img class="" src="assets/background-4.svg" /></div>
+		<div class="animation-wrapper">
+			<div class="animation-wrapper__sky">
+				<div class="component">
+					<div class="component__sun"></div>
+					<div class="component__background--grid">
+						<div class="component__background--section"><img class="" src="assets/background-1.svg" /></div>
+						<div class="component__background--section"><img class="" src="assets/background-2.svg" /></div>
+						<div class="component__background--section"><img class="" src="assets/background-3.svg" /></div>
+						<div class="component__background--section"><img class="" src="assets/background-4.svg" /></div>
 					</div>
-					<div class="svg-image limit">
-						<div class="weld-wrapper">
-							<div class="weld-container">
+					<div class="component__svg--image component__limit">
+						<div class="weld">
+							<div class="weld__container">
 							</div>
-							<div class="weld-container">
+							<div class="weld__container">
 							</div>
 						</div>
 					</div>
-					<img class="svg-image" src="assets/crane.svg" />
-					<div class="svg-components">
+					<img class="component__svg--image" src="assets/crane.svg" />
+					<div class="component__svg">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									width="1024px" height="768px" viewBox="0 0 1024 768" enable-background="new 0 0 1024 768" xml:space="preserve">
 									<path id="trolly" class="trolly-movement" d="M661.25,155.5l-6.632-0.507l-0.533,0.694l-1.461,1.697l-4.377-0.313l-2.711-0.194l-1.037,0.437l-1.51-0.078l0.26-0.486
@@ -59,35 +68,34 @@
 										<path   fill-opacity="null" stroke-width="0.4" stroke-linejoin="null" stroke-linecap="null" stroke-opacity="null" d="m617.198193,252.025815l63.969496,0l0,21.283765l-63.969496,0l0,-21.283765z" id="svg_16"/>
 									</svg>
 								</div>
-								<div class="svg-image limit">
-									<div class="light-wrapper">
-										<div class="light-bar">
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
-											<div class="light red"></div>
+								<div class="component__svg--image component__limit">
+									<div class="light">
+										<div class="light__bar">
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
+											<div class="light__red"></div>
 										</div>
-										<div class="light red top"></div>
+										<div class="light__red--top"></div>
 									</div>
 								</div>
-								<div class="svg-image limit">
-									<div class="spark-wrapper">
-										<div class="spark-container">
-											<div class="spark first"></div>
+								<div class="component__svg--image component__limit">
+									<div class="spark">
+										<div class="spark__container">
+											<div class="spark__item first"></div>
 										</div>
-										<div class="spark-container">
-											<div class="spark second"></div>
+										<div class="spark__container">
+											<div class="spark__item second"></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="ground">
-						</div>
+
 					</div>
 					<script src="index.js"></script>
 				</body>
