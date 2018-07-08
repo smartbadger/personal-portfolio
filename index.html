@@ -9,17 +9,37 @@
 </head>
 
 <body>
-	<header class="header">
-		<svg width="60" height="50" xmlns="http://www.w3.org/2000/svg">
-			<path fill="none" id="canvas_background" d="M-1-1h62v52H-1z" />
-			<g>
-				<path stroke="#fff" id="svg_2" fill="none" d="M5.644 4.577h49.712v40.051H5.644z" />
-				<text font-family="Euphoria, sans-serif" font-size="24" id="svg_1" y="33.09" x="13.848" stroke-width="0" stroke="#000" fill="#fff">
-					CB
-				</text>
-			</g>
-		</svg>
-	</header>
+	<div class="navigation">
+		<input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+		<label class="navigation__label" for="navi-toggle">
+			<svg class="navigation__logo" xmlns="http://www.w3.org/2000/svg">
+				<path fill="none" id="canvas_background" d="M-1-1h62v52H-1z" />
+				<g>
+					<path stroke="#fff" id="svg_2" fill="none" d="M5.644 4.577h49.712v40.051H5.644z" />
+					<text font-family="Euphoria, sans-serif" font-size="24" id="svg_1" y="33.09" x="13.848" stroke-width="0" stroke="#000" fill="#fff">
+						CB
+					</text>
+				</g>
+			</svg>
+		</label>
+		<nav class="navigation__nav">
+			<ul class="navigation__list">
+				<li class="navigation__item">
+					<a class="navigation__link" href="#about">About</a>
+				</li>
+				<li class="navigation__item">
+					<a class="navigation__link" href="#skills">Skills</a>
+				</li>
+				<li class="navigation__item">
+					<a class="navigation__link" href="#projects">Projects</a>
+				</li>
+				<li class="navigation__item">
+					<a class="navigation__link" href="#contact">Contact</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
 	<div class="animation-wrapper">
 		<div class="animation-wrapper__sky">
 			<div class="component">
@@ -116,6 +136,17 @@
 			</div>
 		</div>
 
+	</div>
+	<div class="page-widget">
+		<section class="page-widget__section" id="about">
+			<div class="page-widget__heading">
+				<h1>Hi,<br>I'm Connor</h1><h2>- Web Developer</h2>
+			</div>
+		</section>
+		<section class="page-widget__section" id="skills"></section>
+		<section class="page-widget__section" id="projects"></section>
+		<section class="page-widget__section" id="contact">
+			</sections>
 	</div>
 	<script src="index.js"></script>
 </body>

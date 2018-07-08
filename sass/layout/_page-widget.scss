@@ -1,0 +1,18 @@
+.page-widget {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 5rem;
+    z-index: 9;
+
+    &__section {
+      width: 80%;
+      height: 80vh;
+      margin: auto;
+      background: rgba(0,0,0,0.6);
+    }
+    &__heading {
+      color: $white;
+    }
+  }
