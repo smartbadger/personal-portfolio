@@ -1,7 +1,7 @@
 .light {
     @include normalize-height;
     &__bar {
-        transform: rotate(4deg) translateX(40px);
+        transform: rotate(4deg) translateX(4rem);
         display: flex;
         justify-content: space-between;
         bottom: -17%;
@@ -10,11 +10,11 @@
     &__red {
         visibility: visible;
         opacity: 1;
-        box-shadow: 0 0 5px 5px #ff1818;
-        background-color: #ff1818;
+        box-shadow: 0 0 .5rem .5rem $red;
+        background-color: $red;
         animation: strobe 3s steps(2, start) infinite;
         animation-direction: alternate;
-        @include set-w-h-p(1px, 1px, relative);
+        @include set-w-h-p(.1rem, .1rem, relative);
         &--top {
             position: absolute;
             top: 9%;
@@ -44,7 +44,7 @@
 .particle {
     opacity: 0;
     position: absolute;
-    background-color: rgba(255, 251, 209, 1);
+    background-color: rgba($lt-yellow, 1);
     &__negative--X {
         animation: sparks-neg-X .7s infinite, welding 8s infinite;
     }
@@ -61,7 +61,7 @@
     &__item {
         position: relative;
         width: 10%;
-        margin-top: -20px;
+        margin-top: -2rem;
         animation-timing-function: linear;
     }
 }
@@ -75,8 +75,8 @@
         opacity: 0;
         border-radius: 50%;
         animation: welding 8s infinite;
-        background: radial-gradient( circle, #ffffff 0%, #DDEDFF 25%, #e1ecf9 35%, #cee4ff 40%, rgb(186, 218, 255) 50%, rgba(186, 218, 255, .4) 80%, rgba(186, 218, 255, .1) 100%);
-        @include set-w-h-p(10px, 10px, inherit);
+        background: radial-gradient( circle, $white 0%, $vltr-blue 25%, $vlt-blue 35%, $ltr-blue 40%, $lt-blue 50%, rgba($lt-blue, .4) 80%, rgba($lt-blue, .1) 100%);
+        @include set-w-h-p(1rem, 1rem, inherit);
     }
 } // consider function or mixin
 .material,

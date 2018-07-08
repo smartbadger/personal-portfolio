@@ -3,12 +3,9 @@
 .header {
     position: fixed;
     width: 100%;
-    background: rgba(0,0,0, 0.5);
-    color: #fff;
+    background: rgba($black,0.5);
+    color: $white;
     text-transform: uppercase;
-    height: 60px;
+    height: 6rem;
     font-size: 3rem;
-  }
-  .container {
-    position: relative;
   }
