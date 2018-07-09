@@ -2,17 +2,27 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
-    top: 5rem;
+    top: 40%;
     z-index: 9;
+    transform: translateY(-50%);
 
     &__section {
+      display: none;
+      padding: 4rem;
       width: 80%;
-      height: 80vh;
       margin: auto;
-      background: rgba(0,0,0,0.6);
+      background: rgba($grey,0.75);
+      border-radius: 8px;
+      &:first-child{
+        display: block;
+      }
     }
     &__heading {
       color: $white;
+      h1 {
+        font-size: 8rem;
+        line-height: 10rem;
+      }
+      
     }
   }

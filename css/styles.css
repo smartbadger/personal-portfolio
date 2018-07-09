@@ -491,16 +491,23 @@ h4 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  top: 5rem;
-  z-index: 9; }
+  top: 40%;
+  z-index: 9;
+  transform: translateY(-50%); }
   .page-widget__section {
+    display: none;
+    padding: 4rem;
     width: 80%;
-    height: 80vh;
     margin: auto;
-    background: rgba(0, 0, 0, 0.6); }
+    background: rgba(41, 41, 41, 0.75);
+    border-radius: 8px; }
+    .page-widget__section:first-child {
+      display: block; }
   .page-widget__heading {
     color: #fff; }
+    .page-widget__heading h1 {
+      font-size: 8rem;
+      line-height: 10rem; }
 
 .navigation {
   position: fixed;
@@ -535,7 +542,7 @@ h4 {
       right: 0;
       top: 0;
       bottom: 0;
-      background: linear-gradient(#ffc700 0%, #ffc700 25%, transparent 25%);
+      background: linear-gradient(#ffc700 0%, #ffc700 25%, transparent 26%);
       transition: transform .3s;
       transform: translateY(-25%); }
     .navigation__item::after {
@@ -545,11 +552,12 @@ h4 {
       right: 0;
       top: 0;
       bottom: 0;
-      background: linear-gradient(#ffc700 0%, #ffc700 25%, transparent 25%);
+      background: linear-gradient(#ffc700 0%, #ffc700 25%, transparent 26%);
       transition: transform .3s;
       transform: translateY(100%); }
     .navigation__item:hover {
-      transform: scale(1.1); }
+      transform: scale(1.1);
+      text-shadow: 2px 2px #252525; }
       .navigation__item:hover::before {
         transform: translateY(0); }
       .navigation__item:hover::after {

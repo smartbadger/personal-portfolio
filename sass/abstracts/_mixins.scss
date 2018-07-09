@@ -30,7 +30,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background: linear-gradient($sun-lvl-1 0%, $sun-lvl-1 25%, transparent 25%);
+    background: linear-gradient($sun-lvl-1 0%, $sun-lvl-1 25%, transparent 26%);
     transition: transform .3s;
     transform: translateY($amount);
 }
