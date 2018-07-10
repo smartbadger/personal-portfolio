@@ -20,7 +20,6 @@
 
 @keyframes strobe {
   to {
-    visibility: hidden;
     opacity: 0; } }
 
 @keyframes move-trolly-components {
@@ -314,6 +313,7 @@ h4 {
     background-color: #ff1818;
     animation: strobe 3s steps(2, start) infinite;
     animation-direction: alternate;
+    will-change: opacity;
     width: 0.1rem;
     height: 0.1rem;
     position: relative; }
@@ -327,7 +327,8 @@ h4 {
 .trolly-movement {
   animation: move-trolly-components 45s infinite;
   animation-timing-function: ease-in-out;
-  animation-direction: alternate; }
+  animation-direction: alternate;
+  will-change: transform; }
 
 .cable {
   stroke-width: 1;
@@ -336,12 +337,14 @@ h4 {
   stroke-dashoffset: 485;
   animation: move-cable 45s infinite, move-trolly-components 45s infinite;
   animation-timing-function: ease-in-out;
-  animation-direction: alternate; }
+  animation-direction: alternate;
+  will-change: transform, stroke-dashoffset; }
 
 .particle {
   opacity: 0;
   position: absolute;
-  background-color: #cdfbd1; }
+  background-color: #cdfbd1;
+  will-change: transform; }
   .particle__negative--X {
     animation: sparks-neg-X .7s infinite, welding 8s infinite; }
   .particle__positive--X {
