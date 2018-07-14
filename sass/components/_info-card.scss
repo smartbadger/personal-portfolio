@@ -1,0 +1,41 @@
+
+%heading-props {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2.5%;
+    letter-spacing: 2px;
+    height: 8rem;
+
+}
+
+.info-card {
+    display: flex;
+    justify-content: space-between;
+
+    &__item{
+        text-align: center;
+        width: 100%;
+        margin: 0 1%;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__heading{
+        &--primary{
+            @extend %heading-props;
+            background-color: $card-primary;
+        }
+        &--secondary {
+            @extend %heading-props;
+            background-color: $card-secondary;
+        }
+        &--tertiary {
+            @extend %heading-props;
+            background-color: $card-tertiary;
+        }
+    }
+}
