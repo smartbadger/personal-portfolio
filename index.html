@@ -24,24 +24,25 @@
 		</label>
 		<nav class="navigation__nav">
 			<ul class="navigation__list">
-				<li class="navigation__item">
-					<a class="navigation__link" href="#about">About</a>
+				<li class="navigation__item"  data-bind="intro" style="display:none;"></li>
+				<li class="navigation__item"  data-bind="about">
+					<p class="navigation__link">About</p>
 				</li>
-				<li class="navigation__item">
-					<a class="navigation__link" href="#skills">Skills</a>
+				<li class="navigation__item" data-bind="skills">
+					<p class="navigation__link" >Skills</p>
 				</li>
-				<li class="navigation__item">
-					<a class="navigation__link" href="#projects">Projects</a>
+				<li class="navigation__item" data-bind="projects">
+					<p class="navigation__link" >Projects</p>
 				</li>
-				<li class="navigation__item">
-					<a class="navigation__link" href="#contact">Contact</a>
+				<li class="navigation__item" data-bind="contact">
+					<p class="navigation__link" >Contact</p>
 				</li>
 			</ul>
 		</nav>
 	</div>
 
-	<div class="animation-wrapper">
-		<div class="animation-wrapper__sky">
+	<div class="crane-wrapper">
+		<div class="crane-wrapper__sky">
 			<div class="component">
 				<div class="component__sun"></div>
 				<div class="component__background--grid">
@@ -138,9 +139,14 @@
 
 	</div>
 	<div class="page-widget">
-		<section class="page-widget__section" id="about">
+		<section class="page-widget__section" id="intro">
 			<div class="page-widget__heading">
 				<h1>Hi,<br>I'm Connor</h1><h2>- Web Developer</h2>
+			</div>
+		</section>
+		<section class="page-widget__section" id="about">
+			<div class="page-widget__heading">
+				
 			</div>
 		</section>
 		<section class="page-widget__section" id="skills"></section>
@@ -149,6 +155,7 @@
 			</sections>
 	</div>
 	<script src="index.js"></script>
+	
 </body>
 
 </html>

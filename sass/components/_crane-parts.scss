@@ -1,0 +1,46 @@
+
+
+.material path,
+.hook,
+.trolly-movement {
+    animation: move-trolly-components 45s infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    will-change: transform;
+}
+
+.cable {
+    stroke-width: 1;
+    stroke: black;
+    stroke-dasharray: 485;
+    stroke-dashoffset: 485;
+    animation: move-cable 45s infinite, move-trolly-components 45s infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    will-change: transform, stroke-dashoffset;
+}
+
+ // consider function or mixin
+.material,
+.trolly-movement,
+.cable,
+.hook {
+    --transX1: -55%;
+    --transX2: -50%;
+    --transX3: -5%;
+    --transX4: -5%;
+    --transY1: -6.5%;
+    --transY2: -6.5%;
+    --transY3: 0%;
+    --transY4: 0%;
+    --scale1: 1.1;
+    --scale2: 1;
+}
+
+.hook,
+.material {
+    --transY1: 55%;
+    --transY2: -6.5%;
+    --transY3: 0%;
+    --transY4: 55%;
+}

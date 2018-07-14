@@ -1,3 +1,47 @@
+// Keyframes and Anmiation Classes
+
+.animation {
+  &__fade-in {
+    animation: fade-in .7s ease-in-out; 
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translateX(112.5%) translateY(-50%);
+  }
+  &__slide-in {
+    animation:  slide-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  &__slide-out {
+    animation: slide-out 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  &:not(.active){
+    opacity: 0;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(0) translateY(-50%);
+  }
+  to {
+    transform: translateX(112.5%) translateY(-50%);
+  }
+}
+@keyframes slide-out {
+  0% {
+    transform: translateX(112.5%) translateY(-50%);
+    opacity: 1;
+  }
+  99%{
+    opacity: 1;
+    transform: translateX(225%) translateY(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(225%) translateY(-50%);
+  }
+}
 @keyframes sparks-neg-X {
     0%{ opacity: 1; transform:translateY(0%)}
     95% {
@@ -43,4 +87,10 @@
     59% {opacity: 1;}
     60% {opacity: 0;}
     100%{opacity: 0;}
+  }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
   }

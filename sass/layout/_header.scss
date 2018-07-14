@@ -32,13 +32,13 @@
       transition: transform .3s;
   
       &::before {
-        @include gradient-highlight(-25%);
+        @include gradient-highlight(-26%);
         
       }
       &::after {
         @include gradient-highlight(100%);
       }
-      &:hover {
+      &:hover, &.active {
         &::before {
           transform: translateY(0)
         }

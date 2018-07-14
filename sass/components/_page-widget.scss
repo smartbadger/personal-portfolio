@@ -1,0 +1,21 @@
+
+.page-widget {
+  &__section {
+    position: absolute;
+    left: -80%;
+    top: 40%;
+    padding: 4rem;
+    width: 80%;
+    margin: auto;
+    background: rgba($grey, 0.75);
+    border-radius: 8px;
+    will-change: opacity, transform;
+  }
+  &__heading {
+    color: $white;
+    h1 {
+      font-size: 8rem;
+      line-height: 10rem;
+    }
+  }
+}

@@ -7,12 +7,13 @@
 @import "base/typography";
 @import "base/utilities";
 
-@import "components/animation-parts";
-@import "components/animation-wrapper";
+@import "components/crane-parts";
+@import "components/crane-wrapper";
+@import "components/page-widget";
+@import "components/sparks-welds";
+@import "components/light";
 
-@import "layout/page-widget";
 @import "layout/header";
 
-@import "pages/home";
 
 
