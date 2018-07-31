@@ -1,0 +1,81 @@
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &__group {
+        margin-top: 1.5rem;
+    }
+    &__input {
+        background: $grey;
+        border: none;
+        font-size: 2rem;
+        padding: .5rem 1rem;
+        color: $white;
+        border-bottom: 3px solid $grey;
+        transition: all .5s;
+        border-radius: 3px;
+        &::placeholder{
+            color: $white;
+        }
+        &:focus {
+            outline: none;
+            border-color: $sky-lvl-1;
+        }
+        &:focus:invalid {
+            border-color: $sky-lvl-3;
+        }
+    }
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }   
+    &__label {
+        display: block;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        margin-left: .5rem;
+        margin-top: .5rem;
+        transition: all .3s;
+    }
+    &__textarea {
+        overflow: hidden;
+        word-wrap: break-word;
+        resize: none;
+        width: 30rem;
+        height: 20rem;
+    }
+    &__left, 
+    &__right {
+        display: inline-block;
+        width: 49.5%;
+        min-width: 30rem;
+    }
+    &__left > .form__group {
+        width: max-content;
+        margin-left: auto;
+        margin-right: 2rem;
+    }
+    &__bottom {
+        flex: 1;
+    }
+    &__submit {
+        display: block;
+        margin: auto;
+        font-family: inherit;
+        border: none;  
+        padding: 1rem;
+        font-size: 2rem;
+        background: $sky-lvl-3;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        will-change: transform;
+        border-radius: 3px;
+        transition: transform .2s;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 1px 0px $black;
+        }
+    }
+}

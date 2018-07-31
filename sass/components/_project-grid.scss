@@ -1,0 +1,17 @@
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    &__item {
+        width: 20rem;
+        height: 20rem;
+        &:nth-child(even){
+            background: $sun-lvl-1;
+        }
+        &:nth-child(odd){
+            background: $sky-lvl-0;
+            //background: $sky-lvl-1;
+            
+        }
+    }
+}
