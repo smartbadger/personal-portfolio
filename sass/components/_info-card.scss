@@ -17,6 +17,32 @@
             margin-right: 0;
         }
     }
+    &__icon {
+        display: inline-block;
+        width: 5rem;
+        padding-right: 1rem;
+        
+    }
+    &__text{
+        display: inline-block;
+        font-size: 2rem;
+        hyphens: auto;
+    }
+    &__skill {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem;
+        padding-left: 20%;
+        border-bottom: 2px solid $md-grey;
+    }
+    &__cert {
+        padding-left: 10%;
+    }
+    &__column-text {
+        padding: 1rem;
+        hyphens: auto;
+    }
     &__heading{
         &--primary{
             background-size: 20rem 20rem;
