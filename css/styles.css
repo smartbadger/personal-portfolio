@@ -766,14 +766,38 @@ p {
 
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; }
+  grid-template-columns: repeat(7, 12.5rem);
+  grid-column-gap: 1rem;
+  grid-auto-rows: 20rem;
+  margin-right: -12.5rem;
+  margin-bottom: 5rem; }
   .project-grid__item {
-    width: 20rem;
-    height: 20rem; }
-    .project-grid__item:nth-child(even) {
-      background: #ffc700; }
-    .project-grid__item:nth-child(odd) {
-      background: #0c2e42; }
+    grid-column: span 2; }
+  .project-grid__item:nth-child(5n+1) {
+    grid-column-start: 1; }
+  .project-grid__item:nth-child(5n+2) {
+    grid-column-start: 3; }
+  .project-grid__item:nth-child(5n+3) {
+    grid-column-start: 5; }
+  .project-grid__item:nth-child(5n+4) {
+    grid-column-start: 2; }
+  .project-grid__item:nth-child(5n) {
+    grid-column-start: 4; }
+  .project-grid__item:nth-child(even) .project-grid__hexagon {
+    background: #ffc700; }
+  .project-grid__item:nth-child(odd) .project-grid__hexagon {
+    background: #0c2e42; }
+  .project-grid__hexagon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    margin-left: .5rem;
+    width: 25rem;
+    height: 25rem;
+    cursor: pointer;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
 
 .navigation {
   position: fixed;
