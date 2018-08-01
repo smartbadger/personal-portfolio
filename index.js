@@ -74,7 +74,7 @@ const slideManager = {
     this.startAnimation('animation__fade-in')
   },
   buildSlider: function() {
-    document.querySelectorAll('.page-widget__section').forEach((element)=> {
+    document.querySelectorAll('.page-widget__section-wrapper').forEach((element)=> {
       const bindingElement = document.querySelector(`li[data-bind="${element.id}"]`)
       if(bindingElement) { 
         bindingElement.addEventListener('click', this.slideHandler(element, bindingElement))

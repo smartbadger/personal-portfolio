@@ -10,7 +10,7 @@
   animation-delay: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
-  transform: translateX(112.5%) translateY(-50%); }
+  transform: translateX(100%) translateY(0); }
 
 .animation__slide-in {
   animation: slide-in 1s ease-in-out;
@@ -25,20 +25,20 @@
 
 @keyframes slide-in {
   from {
-    transform: translateX(0) translateY(-50%); }
+    transform: translateX(0) translateY(0); }
   to {
-    transform: translateX(112.5%) translateY(-50%); } }
+    transform: translateX(100%) translateY(0); } }
 
 @keyframes slide-out {
   0% {
-    transform: translateX(112.5%) translateY(-50%);
+    transform: translateX(100%) translateY(0);
     opacity: 1; }
   99% {
     opacity: 1;
-    transform: translateX(225%) translateY(-50%); }
+    transform: translateX(225%) translateY(0); }
   100% {
     opacity: 0;
-    transform: translateX(225%) translateY(-50%); } }
+    transform: translateX(225%) translateY(0); } }
 
 @keyframes sparks-neg-X {
   0% {
@@ -474,21 +474,51 @@ p {
     top: 0;
     align-items: flex-end; }
 
-.page-widget__section {
+.page-widget__section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  left: -80%;
-  top: 45%;
-  padding: 0 4rem 4rem 4rem;
-  width: 80%;
-  margin: auto;
-  background: rgba(41, 41, 41, 0.75);
-  border-radius: 8px;
+  width: 100vw;
+  left: -100vw;
+  right: 0;
+  top: 50px;
+  bottom: 50px;
+  padding: 0 10%;
   will-change: opacity, transform;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6); }
+  overflow: hidden; }
 
-.page-widget__heading h1 {
-  font-size: 8rem;
-  line-height: 10rem; }
+.page-widget__section {
+  background: rgba(41, 41, 41, 0.85);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
+  padding: 0 4rem 4rem 4rem; }
+
+.page-widget__flex {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  min-height: 60vh;
+  width: 100%; }
+
+.page-widget__heading {
+  flex: 1 1 40%;
+  padding: 1.5rem 3rem; }
+  .page-widget__heading h1 {
+    font-size: 8rem;
+    line-height: 10rem;
+    word-wrap: none;
+    white-space: nowrap; }
+
+.page-widget__photo-container {
+  flex: 1 1 60%;
+  border-radius: 8px;
+  padding-left: 4rem;
+  background-image: url("../assets/images/profile@1x.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
+  filter: grayscale(100%); }
 
 .page-widget__title {
   position: relative;

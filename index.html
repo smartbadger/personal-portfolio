@@ -140,15 +140,18 @@
 
 	</div>
 	<div class="page-widget">
-		<section class="page-widget__section" id="intro">
+		<section class="page-widget__section-wrapper" id="intro">
+			<div class="page-widget__section page-widget__flex">
 			<div class="page-widget__heading">
 				<h1>Hi,
 					<br>I'm Connor</h1>
 				<h2>- Web Developer</h2>
 			</div>
+			<div class="page-widget__photo-container"></div>
+		</div>
 		</section>
-		<section class="page-widget__section" id="about">
-
+		<section class="page-widget__section-wrapper" id="about">
+				<div class="page-widget__section">
 				<div class="page-widget__heading">
 					<h1>About Me</h1>
 					<p>I love building beautiful and functional websites.</p>
@@ -156,9 +159,10 @@
 					<p>Consectetur expedita nihil laboriosam aspernatur est dolores ad recusandae dolorem quia tempore! A placeat officiis maiores corrupti provident, laboriosam quia perferendis quasi nam deserunt, odio debitis corporis atque harum? Ut.</p>
 				</div>
 				<div class="page-widget__map"></div>
-
+				</div>
 		</section>
-		<section class="page-widget__section" id="skills">
+		<section class="page-widget__section-wrapper" id="skills">
+				<div class="page-widget__section">
 			<div class="page-widget__title"><div class="page-widget__shadow"></div><h2 class="page-widget__text">Skills</h2></div>
 			<div class="info-card">
 				<div class="info-card__item">
@@ -178,15 +182,18 @@
 							<img src="./assets/images/python.png" class="info-card__icon" alt="" />
 							<p class="info-card__text" >Python</p>
 						</div>
+						<!-- hide for now
 						<div class="info-card__skill">
 							<img src="./assets/images/postgres.png" class="info-card__icon" alt="" />
 							<p class="info-card__text" >PostgreSQL</p>
-						</div>
+						</div> 
+						-->
 						<div class="info-card__skill">
 							<img src="./assets/images/shopify_glyph.png" class="info-card__icon" alt="" />
 							<p class="info-card__text" >Shopify</p>
 						</div>
 						<div class="info-card__skill">
+							<img src="./assets/images/mysql.png" class="info-card__icon" alt="" />
 							<p class="info-card__text" >MySQL</p>
 						</div>
 					</div>
@@ -204,7 +211,7 @@
 						<p>Certificates</p>
 					</div>
 					<div class="info-card__column">
-							<div class="info-card__cert info-card__skill"><p class="info-card__text">B.S. MIS</p></div>
+							<div class="info-card__cert info-card__skill"><p class="info-card__text">B.S. Information Systems</p></div>
 							<div class="info-card__cert info-card__skill"><p class="info-card__text">Full Stack Web Developer</p></div>
 							<div class="info-card__cert info-card__skill"><p class="info-card__text">Advanced CSS and SCSS</p></div>
 							<div class="info-card__cert info-card__skill"><p class="info-card__text">SVG and Animations</p></div>
@@ -213,8 +220,10 @@
 					
 				</div>
 			</div>
+			</div>
 		</section>
-		<section class="page-widget__section" id="projects">
+		<section class="page-widget__section-wrapper" id="projects">
+				<div class="page-widget__section">
 			<div class="page-widget__title"><div class="page-widget__shadow"></div><h2 class="page-widget__text">Projects</h2></div>
 			<div class="project-grid">
 				<div class="project-grid__item"><p>React E-Commerce Plugin</p></div>
@@ -223,8 +232,10 @@
 				<div class="project-grid__item"><p>Ruby On Rails E-Commerce Store</p></div>
 				<div class="project-grid__item"><p>Swift App</p></div>
 			</div>
+			</div>
 		</section>
-		<section class="page-widget__section" id="contact">
+		<section class="page-widget__section-wrapper" id="contact">
+				<div class="page-widget__section">
 			<div class="page-widget__title"><div class="page-widget__shadow"></div><h2 class="page-widget__text">Contact</h2></div>
 			<div class="contact-form">
 				<form action="#" class="form">
@@ -248,6 +259,7 @@
 						<input type="submit" class="form__submit">
 					</div> 
 				</form>
+			</div>
 			</div>
 		</section>
 	</div>

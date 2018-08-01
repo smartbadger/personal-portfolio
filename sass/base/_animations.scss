@@ -6,7 +6,7 @@
     animation-delay: 1s;
     animation-fill-mode: forwards;
     opacity: 0;
-    transform: translateX(112.5%) translateY(-50%);
+    transform: translateX(100%) translateY(0);
   }
   &__slide-in {
     animation:  slide-in 1s ease-in-out;
@@ -22,24 +22,24 @@
 }
 @keyframes slide-in {
   from {
-    transform: translateX(0) translateY(-50%);
+    transform: translateX(0) translateY(0);
   }
   to {
-    transform: translateX(112.5%) translateY(-50%);
+    transform: translateX(100%) translateY(0);
   }
 }
 @keyframes slide-out {
   0% {
-    transform: translateX(112.5%) translateY(-50%);
+    transform: translateX(100%) translateY(0);
     opacity: 1;
   }
   99%{
     opacity: 1;
-    transform: translateX(225%) translateY(-50%);
+    transform: translateX(225%) translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateX(225%) translateY(-50%);
+    transform: translateX(225%) translateY(0);
   }
 }
 @keyframes sparks-neg-X {
