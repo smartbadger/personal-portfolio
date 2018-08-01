@@ -489,7 +489,7 @@ p {
   overflow: hidden; }
 
 .page-widget__section {
-  background: rgba(41, 41, 41, 0.85);
+  background: rgba(41, 41, 41, 0.9);
   border-radius: 8px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.6);
   padding: 0 4rem 4rem 4rem; }
@@ -523,7 +523,7 @@ p {
 .page-widget__title {
   position: relative;
   text-align: center;
-  margin-bottom: 1.5rem; }
+  margin-bottom: 2.5rem; }
 
 .page-widget__text {
   z-index: 2;
@@ -737,12 +737,10 @@ p {
     overflow: hidden;
     word-wrap: break-word;
     resize: none;
-    width: 30rem;
-    height: 20rem; }
+    width: 30rem; }
   .form__left, .form__right {
     display: inline-block;
-    width: 49.5%;
-    min-width: 30rem; }
+    width: 49.5%; }
   .form__left > .form__group {
     width: max-content;
     margin-left: auto;

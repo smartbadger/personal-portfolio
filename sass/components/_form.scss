@@ -43,13 +43,11 @@
         word-wrap: break-word;
         resize: none;
         width: 30rem;
-        height: 20rem;
     }
     &__left, 
     &__right {
         display: inline-block;
         width: 49.5%;
-        min-width: 30rem;
     }
     &__left > .form__group {
         width: max-content;
