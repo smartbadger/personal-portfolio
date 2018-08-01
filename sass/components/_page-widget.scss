@@ -9,26 +9,34 @@
     left: -100vw;
     right: 0;
     top: 50px;
-    bottom: 50px;
-    padding: 0 10%;
-    will-change: opacity, transform;
+    padding: 5%;
+    height: max-content;
     overflow: hidden;
+    will-change: opacity, transform;
+
+    @include media(tablet){
+      align-items: flex-start;
+      margin-top: 3rem;
+    }
   }
   &__section {
     background: rgba($grey, 0.9);
     border-radius: 8px;
     box-shadow: 2px 2px 2px 2px rgba($black, 0.6);
     padding: 0 4rem 4rem 4rem;
+    max-width: 1800px;
   }
   &__flex {
     display: flex;
     flex-direction: row;
     padding: 0;
-    min-height: 60vh;
     width: 100%;
+    @include media(tablet){
+      flex-direction: column;
+    }
   }
   &__heading {
-    flex: 1 1 40%;
+    flex: 1;
     padding: 1.5rem 3rem;
     h1 {
       font-size: 8rem;
@@ -38,14 +46,21 @@
     }
   }
   &__photo-container {
-    flex: 1 1 60%;
+    min-height: 50vh;
+    flex: 1;
     border-radius: 8px;
     padding-left: 4rem;
     background-image: url("../assets/images/profile@1x.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     clip-path: polygon(15% 0, 100% 0%, 100% 100%, 0 100%);
     filter: grayscale(100%);
+    @include media(tablet) {
+      clip-path: polygon(0% 0, 100% 15%, 100% 100%, 0 100%);
+      background-position: top;
+      border-radius: 3px;
+    }
   }
   &__title{
     position: relative;
@@ -71,5 +86,18 @@
     right: -1px;
     background: rgba($black, 0.5);
     clip-path: polygon(0% 0, 100% 0%, 75% 100%, 25% 100%);
+  }
+  &__map {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    object-fit: cover;
+  }
+  &__map-container {
+    clip-path: polygon(0 0, 100% 0%, 85% 100%, 0 100%);
+    @include media(tablet){
+      clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0 100%);
+      order: 2;
+    }
   }
 }

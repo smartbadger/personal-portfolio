@@ -5,11 +5,17 @@
     display: flex;
     justify-content: space-between;
 
+    @include media(tablet){
+        justify-content: center;
+        flex-direction: column;
+    }
     &__item{
         background: $grey;
         text-align: center;
         width: 100%;
-        margin: 0 1%;
+        margin: 1rem;
+        max-width: 40rem;
+
         &:first-child {
             margin-left: 0;
         }
@@ -42,6 +48,9 @@
     &__column-text {
         padding: 1rem;
         hyphens: auto;
+        @include media(phone){
+            padding: 10%;
+        }
     }
     &__heading{
         &--primary{

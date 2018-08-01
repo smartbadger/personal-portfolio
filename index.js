@@ -113,7 +113,9 @@ const slideManager = {
     })
   }
 }
+console.log('Starting');
 document.addEventListener("DOMContentLoaded", evt => {
+  console.log('loadedDOM')
   animationManager.init()
   slideManager.init()
 })
