@@ -754,7 +754,7 @@ p {
     border: none;
     padding: 1rem;
     font-size: 2rem;
-    background: #e29b30;
+    background: #ffc700;
     text-transform: uppercase;
     letter-spacing: 2px;
     will-change: transform;
@@ -800,6 +800,8 @@ p {
     padding: 0 1rem;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    user-select: none;
     background: linear-gradient(transparent 0%, transparent 50%, transparent 50%);
     transition: transform .3s; }
     .navigation__item::before {

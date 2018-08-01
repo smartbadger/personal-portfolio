@@ -29,6 +29,8 @@
       padding: 0 1rem;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      user-select: none;
       background: linear-gradient(transparent 0%, transparent 50%,transparent 50%);
       transition: transform .3s;
   
