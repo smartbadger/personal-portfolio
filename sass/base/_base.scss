@@ -14,22 +14,21 @@ html {
 
   // default browser font size is 16px set to 10
   font-size: 62.5%; // 1rem = 10px; 10px/16px 0 62.5%
-  @include media(phone){
-    font-size: 50%;  // 1rem = 10px; 10px/16px 0 62.5%
-  }
-  @include media(tablet){
-    font-size: 52%;  // 1rem = 8px; 10px/16px 0 62.5%
+  @include media(big-desktop){
+    font-size: 75%; // 1rem = 12px; 10px/16px 0 62.5%
   }
   @include media(desktop){
     font-size: 56.25%; // 1rem = 9px; 10px/16px 0 62.5%
   }
-  @include media(big-desktop){
-    font-size: 75%; // 1rem = 12px; 10px/16px 0 62.5%
+  @include media(tablet){
+    font-size: 52%;  // 1rem = 8px; 10px/16px 0 62.5%
   }
-
+  @include media(phone){
+    font-size: 48%;  // 1rem = 10px; 10px/16px 0 62.5%
+  }
 }
 body {
-        box-sizing: border-box;
+  box-sizing: border-box;
 }
 .hidden {
   visibility: hidden;

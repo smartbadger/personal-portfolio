@@ -11,19 +11,16 @@
 
 <body>
 	<div class="navigation">
-		<input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
-		<label class="navigation__label" for="navi-toggle">
-			<svg class="navigation__logo" xmlns="http://www.w3.org/2000/svg">
-				<path fill="none" id="canvas_background" d="M-1-1h62v52H-1z" />
-				<g>
+		<nav class="navigation__nav">
+			<input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+			<label class="navigation__label" for="navi-toggle">
+				<svg class="navigation__logo" xmlns="http://www.w3.org/2000/svg">
 					<path stroke="#fff" id="svg_2" fill="none" d="M5.644 4.577h49.712v40.051H5.644z" />
 					<text font-family="Euphoria, sans-serif" font-size="24" id="svg_1" y="33.09" x="13.848" stroke-width="0" stroke="#000" fill="#fff">
 						CB
 					</text>
-				</g>
-			</svg>
-		</label>
-		<nav class="navigation__nav">
+				</svg>
+			</label>
 			<ul class="navigation__list">
 				<li class="navigation__item" data-bind="intro" style="display:none;"></li>
 				<li class="navigation__item" data-bind="about">
