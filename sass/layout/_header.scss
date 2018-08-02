@@ -1,7 +1,7 @@
 // 
 // 
 .navigation {
-    position: fixed;
+    position: absolute;
     display: block;
 
     width: 100%;
@@ -63,6 +63,9 @@
       display: flex;
       width: 6.5rem;
       height: 5rem;
+      @include media(phone){
+        display: none;
+      }
     }
     &__label{
       display: inline-block;

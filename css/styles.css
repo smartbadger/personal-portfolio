@@ -870,7 +870,7 @@ p {
       transform: scale(1.1); }
 
 .navigation {
-  position: fixed;
+  position: absolute;
   display: block;
   width: 100%;
   max-width: 100vw;
@@ -935,6 +935,9 @@ p {
     display: flex;
     width: 6.5rem;
     height: 5rem; }
+    @media (max-width: 37.5em) {
+      .navigation__logo {
+        display: none; } }
   .navigation__label {
     display: inline-block;
     margin-left: 25px; }
