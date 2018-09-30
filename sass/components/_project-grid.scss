@@ -8,10 +8,12 @@
     margin: 10rem auto;
     @include media(tablet){
         grid-template-columns: repeat(4, 12.5rem);
+        max-width: calc(4 * 12.5rem);
     }
     @include media(phone) {
-        grid-template-columns: repeat(4, 7.5rem);
-        grid-auto-rows: 13rem;
+        grid-template-columns: 24rem;
+        grid-auto-rows: 28rem;
+        max-width: 24rem;
     }
 
     &__item {
@@ -34,6 +36,13 @@
             &:nth-child(5n+4) { grid-column-start: 1;}
             &:nth-child(5n) { grid-column-start: 3;}               
         }
+        @include media(phone) {
+            &:nth-child(5n+1) { grid-column-start: auto;}
+            &:nth-child(5n+2) { grid-column-start: auto;}
+            &:nth-child(5n+3) { grid-column-start: auto;}
+            &:nth-child(5n+4) { grid-column-start: auto;}
+            &:nth-child(5n) { grid-column-start: auto;}               
+        }
     }
 
     &__hexagon {
@@ -51,8 +60,8 @@
         will-change: scale;
         transition: all .25s;
         @include media(phone){
-            width: 15rem;
-            height: 15rem;
+            width: 25rem;
+            height: 25rem;
         }
         &:hover {
             transform: scale(1.1);

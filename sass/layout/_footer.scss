@@ -10,8 +10,28 @@
     }
     &__social-icons{
         @include flex-container;
+        height: 100%;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+    }
+    &__icon {
+        width: 100%;
+        transition: .5s;
+        will-change: transform;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    &__link {
+        display: block;
+        margin: 1rem 2rem;
+        flex-basis: 6rem;
+
+        
     }
     &__text{
+        margin: 2rem;
+        flex-basis: 100%;
         color: $white;
         text-align: center;
     }

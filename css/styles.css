@@ -126,7 +126,8 @@ p {
   @media (max-width: 75em) {
     .info-card {
       justify-content: center;
-      flex-direction: column; } }
+      flex-direction: column;
+      align-items: center; } }
   .info-card__item {
     background: #C4CDD5;
     text-align: center;
@@ -212,11 +213,13 @@ p {
   margin: 10rem auto; }
   @media (max-width: 75em) {
     .project-grid {
-      grid-template-columns: repeat(4, 12.5rem); } }
+      grid-template-columns: repeat(4, 12.5rem);
+      max-width: calc(4 * 12.5rem); } }
   @media (max-width: 37.5em) {
     .project-grid {
-      grid-template-columns: repeat(4, 7.5rem);
-      grid-auto-rows: 13rem; } }
+      grid-template-columns: 24rem;
+      grid-auto-rows: 28rem;
+      max-width: 24rem; } }
   .project-grid__item {
     grid-column: span 2; }
     .project-grid__item:nth-child(5n+1) {
@@ -244,6 +247,17 @@ p {
         grid-column-start: 1; }
       .project-grid__item:nth-child(5n) {
         grid-column-start: 3; } }
+    @media (max-width: 37.5em) {
+      .project-grid__item:nth-child(5n+1) {
+        grid-column-start: auto; }
+      .project-grid__item:nth-child(5n+2) {
+        grid-column-start: auto; }
+      .project-grid__item:nth-child(5n+3) {
+        grid-column-start: auto; }
+      .project-grid__item:nth-child(5n+4) {
+        grid-column-start: auto; }
+      .project-grid__item:nth-child(5n) {
+        grid-column-start: auto; } }
   .project-grid__hexagon {
     display: flex;
     justify-content: center;
@@ -260,8 +274,8 @@ p {
     transition: all .25s; }
     @media (max-width: 37.5em) {
       .project-grid__hexagon {
-        width: 15rem;
-        height: 15rem; } }
+        width: 25rem;
+        height: 25rem; } }
     .project-grid__hexagon:hover {
       transform: scale(1.1); }
 
@@ -282,7 +296,22 @@ p {
   .footer__social-icons {
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    margin-top: 2rem; }
+  .footer__icon {
+    width: 100%;
+    transition: .5s;
+    will-change: transform; }
+    .footer__icon:hover {
+      transform: scale(1.1); }
+  .footer__link {
+    display: block;
+    margin: 1rem 2rem;
+    flex-basis: 6rem; }
   .footer__text {
+    margin: 2rem;
+    flex-basis: 100%;
     color: #fff;
     text-align: center; }
