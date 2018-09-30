@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(6, 12.5rem);
     grid-column-gap: 1rem;
-    grid-auto-rows: 20rem;
+    grid-auto-rows: 23rem;
     margin-bottom: 5rem;
     max-width: calc(6 * 12.5rem);
     margin: 10rem auto;
@@ -12,7 +12,7 @@
     }
     @include media(phone) {
         grid-template-columns: 24rem;
-        grid-auto-rows: 28rem;
+        grid-auto-rows: 34rem;
         max-width: 24rem;
     }
 
@@ -23,12 +23,6 @@
         &:nth-child(5n+3) { grid-column-start: 5;}
         &:nth-child(5n+4) { grid-column-start: 2;}
         &:nth-child(5n) { grid-column-start: 4;}   
-        &:nth-child(even) .project-grid__hexagon {
-            background: $white;
-        }
-        &:nth-child(odd) .project-grid__hexagon {
-            background: $black;
-        }
         @include media(tablet){
             &:nth-child(5n+1) { grid-column-start: 1;}
             &:nth-child(5n+2) { grid-column-start: 3;}
@@ -46,6 +40,7 @@
     }
 
     &__hexagon {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -53,19 +48,40 @@
         text-align: center;
         margin-left: .5rem;
         width: 25rem;
-        height: 25rem;
+        height: 14.5rem;
         cursor: pointer;
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         transform: scale(.95);
         will-change: scale;
         transition: all .25s;
+        background-color: $white;
+
+        &::before,
+        &::after {
+            display: block;
+            content: "";
+            position: absolute;
+            height: inherit;
+            width: inherit;
+            background: $white;
+            
+        }
+        &:before {
+            transform: rotateZ(60deg);
+        }
+        &:after {
+            transform: rotateZ(-60deg);
+        }
+
         @include media(phone){
             width: 25rem;
-            height: 25rem;
+            height: 14.5rem;
         }
         &:hover {
             transform: scale(1.1);
         }
-        
     } 
+    &__hex-content {
+        position: relative;
+        z-index: 10;
+    }
 }
