@@ -1,3 +1,9 @@
 .icon-container {
     @include flex-container(space-between, flex-end);
+    .icon-item {
+        svg{
+            display: block;
+            margin: auto;
+        }
+    }
 }

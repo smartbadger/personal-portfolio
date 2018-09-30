@@ -40,7 +40,8 @@ body {
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5%;
+  grid-column-gap: 5%;
+  grid-row-gap: 5rem;
   width: 100%;
   &__item {
       grid-column: span 2;
