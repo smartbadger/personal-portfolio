@@ -82,7 +82,7 @@ p {
   .chart__heading {
     font-size: 6rem; }
   .chart__subheading {
-    font-size: 2.5rem; }
+    font-size: 2.3rem; }
 
 .page-section {
   display: block;
@@ -282,7 +282,10 @@ p {
     flex: 1;
     height: 3rem;
     background: #454F5B; }
-  .footer .social-icons {
+  .footer__social-icons {
     display: flex;
     justify-content: center;
     align-items: center; }
+  .footer__text {
+    color: #fff;
+    text-align: center; }

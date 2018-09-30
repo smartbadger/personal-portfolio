@@ -8,7 +8,11 @@
         height: 3rem;
         background: $lt-ink;
     }
-    .social-icons{
+    &__social-icons{
         @include flex-container;
+    }
+    &__text{
+        color: $white;
+        text-align: center;
     }
 }
