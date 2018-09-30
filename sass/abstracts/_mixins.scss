@@ -3,10 +3,10 @@
     padding-bottom: calc((768/1024) * 100%);
     height: 0;
 }
-@mixin flex-container($justify: 'center', $align: 'center') {
+@mixin flex-container($justify: center, $align: center) {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: $justify;
+    align-items: $align;
     
 }
 @mixin set-animation-position {
