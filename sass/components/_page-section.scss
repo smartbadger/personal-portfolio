@@ -1,6 +1,9 @@
 .page-section {
     display: block;
+    position: relative;
     width: 100%;
+    height: 100%;
+    margin: 2rem 0 4rem 0;
     &__container {
         width: 90%;
         padding: 6rem 0;
@@ -15,7 +18,7 @@
             text-align: center;
             background: $lt-ink;
             color: $white;
-            box-shadow: 0px 1px rgba($ink, 0.5);
+            box-shadow: 0px 2px 3px rgba($black, 0.6);
         }
     }
     &__image {
@@ -51,7 +54,7 @@
     grid-auto-rows: 20rem;
     margin-bottom: 5rem;
     max-width: calc(6 * 12.5rem);
-    margin: auto;
+    margin: 10rem auto;
     @include media(tablet){
         grid-template-columns: repeat(4, 12.5rem);
     }
@@ -105,4 +108,7 @@
         }
         
     } 
+}
+.project-background {
+    background: $ink;
 }

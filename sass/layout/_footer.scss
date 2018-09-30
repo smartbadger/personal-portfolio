@@ -1,0 +1,14 @@
+.footer {
+    background: $ink;
+    min-height: 200px;
+    &::before {
+        display: block;
+        content: "";
+        flex: 1;
+        height: 3rem;
+        background: $lt-ink;
+    }
+    .social-icons{
+        @include flex-container;
+    }
+}
