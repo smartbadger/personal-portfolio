@@ -1,0 +1,3 @@
+.icon-container {
+    @include flex-container(space-between, flex-end);
+}
