@@ -1,6 +1,11 @@
 .icon-container {
     @include flex-container(space-between, flex-end);
+    @include media(phoneXL) {
+        flex-direction: column;
+        align-items: center;
+    }
     .icon-item {
+        margin: 4rem 0;
         svg{
             display: block;
             margin: auto;

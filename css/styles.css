@@ -45,6 +45,9 @@ body {
       grid-column: span 1;
       grid-row: span 2; }
 
+img {
+  width: 100%; }
+
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -300,14 +303,23 @@ p {
   .project-grid__hex-content {
     position: relative;
     z-index: 10; }
+    .project-grid__hex-content a {
+      text-decoration: none;
+      color: #000; }
 
 .icon-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-end; }
-  .icon-container .icon-item svg {
-    display: block;
-    margin: auto; }
+  @media (max-width: 56.25em) {
+    .icon-container {
+      flex-direction: column;
+      align-items: center; } }
+  .icon-container .icon-item {
+    margin: 4rem 0; }
+    .icon-container .icon-item svg {
+      display: block;
+      margin: auto; }
 
 .footer {
   background: #212B36;
