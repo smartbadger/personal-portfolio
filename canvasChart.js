@@ -51,8 +51,14 @@ const canvasChart = {
         ctx.rect(0, window.innerHeight - width, window.innerWidth, width);
         ctx.fillStyle = "#454F5B";
         ctx.fill();
+    },
+    drawLine: function() {
+
+    },
+    animateHanlder: function(ratio) {
 
     }
+
 }
 document.addEventListener("DOMContentLoaded", evt => {
     canvasChart.init()
