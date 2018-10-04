@@ -7,6 +7,7 @@ const canvasChart = {
         this.ctx = canvas.getContext("2d");
 
         this.createGridlines();
+        this.drawLine();
         this.addHandlers();
     },
     addHandlers: function() {
@@ -24,6 +25,7 @@ const canvasChart = {
         let ctx = this.canvas.getContext("2d")
         ctx.strokeStyle = "#454F5B";
 
+        // should be global for other draw line reference
         let gridLineUnitX = window.innerWidth / 12;
         let gridLineUnitY = window.innerHeight / 8;
 
@@ -38,13 +40,13 @@ const canvasChart = {
         let yLine = 0;
 
         function draw(x1, y1, x2, y2) {
-        
+            ctx.strokeStyle = "#454F5B";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
             ctx.moveTo(x1, y1);
             ctx.lineTo(x2, y2);
             ctx.closePath();
             ctx.stroke();
-            console.log(x1, y1)
-            console.log(x2, y2)
         }
         function animate() {
             xLine = xLine + unitIncrementX
@@ -70,7 +72,44 @@ const canvasChart = {
         this.ctx.fill();
     },
     drawLine: function() {
+        let ctx = this.canvas.getContext("2d")
 
+        ctx.moveTo(0, this.canvas.height);
+        ctx.lineTo(this.canvas.width, 0);
+
+        const gridLineUnitX = window.innerWidth / 12;
+        const gridLineUnitY = window.innerHeight / 8;
+        const unitIncrement = window.innerWidth / 25;
+        const slope = (window.innerWidth/window.innerHeight);
+
+        let xpos= 0
+        let ypos = window.innerHeight 
+        // returns the set animation iteration of coords
+        function returnCoords(){
+            
+        }
+        function draw(x1, y1, x2, y2){
+            ctx.strokeStyle = "#9C6ADE";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.closePath();
+            ctx.stroke();
+            console.log(x1,x2)
+            console.log(y1,y2)
+        }
+        function animate(){
+            xpos = xpos + unitIncrement
+            ypos = ypos - unitIncrement
+
+            // this needs to be inverted for positive slope
+            draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrement)
+            if(xpos <= window.innerWidth){
+                window.requestAnimationFrame(animate)
+            }
+        }
+        window.requestAnimationFrame(animate)
     },
     animateHanlder: function(ratio) {
 
