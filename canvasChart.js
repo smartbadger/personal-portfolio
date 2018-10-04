@@ -1,18 +1,18 @@
 const canvasChart = {
     init: function() {
+        const canvas = document.getElementById('canvas');
+        this.canvas = canvas
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.ctx = canvas.getContext("2d");
+
+        this.createGridlines();
         this.addHandlers();
-        this.buildCanvas();
     },
     addHandlers: function() {
         window.addEventListener('resize', (evt) => {
             this.updateCanvas()
         });
-    },
-    buildCanvas: function() {
-        this.canvas = document.getElementById('canvas');
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-        this.createGridlines();
     },
     updateCanvas: function() {
         this.canvas.width = window.innerWidth;
@@ -20,37 +20,54 @@ const canvasChart = {
         this.createGridlines()
     },
     createGridlines: function() {
-        let ctx = this.canvas.getContext("2d");
-        if (window.innerWidth > 766){
-            this.createLegend(ctx)
-        }
-        let unitX = window.innerWidth / 12;
-        let unitY = window.innerHeight / 8;
+        // setup context
+        let ctx = this.canvas.getContext("2d")
         ctx.strokeStyle = "#454F5B";
-        for (let x = 1; x < window.innerWidth; x += unitX) {
 
-            ctx.beginPath();
-            ctx.setLineDash([5, 15]);
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, window.innerHeight);
-            ctx.stroke();
+        let gridLineUnitX = window.innerWidth / 12;
+        let gridLineUnitY = window.innerHeight / 8;
+
+        let unitIncrementX = window.innerWidth / 25;
+        let unitIncrementY = window.innerHeight / 25;
+
+        if (window.innerWidth > 766){
+            this.createLegend()
         }
 
-        for (let y = 1; y < window.innerHeight; y += unitY) {
-            ctx.beginPath();
-            ctx.setLineDash([]);
-            ctx.moveTo(0, y);
-            ctx.lineTo(window.innerWidth, y);
-            ctx.stroke();
+        let xLine = 0; 
+        let yLine = 0;
 
+        function draw(x1, y1, x2, y2) {
+        
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.closePath();
+            ctx.stroke();
+            console.log(x1, y1)
+            console.log(x2, y2)
         }
+        function animate() {
+            xLine = xLine + unitIncrementX
+            yLine = yLine + unitIncrementY
+            for (let  horzLine = 1;  horzLine < window.innerHeight;  horzLine += gridLineUnitX) {
+                draw(xLine - unitIncrementX, horzLine, xLine + unitIncrementX, horzLine)
+            }
+            for (let  vertLine = 1;  vertLine < window.innerWidth;  vertLine += gridLineUnitY) {
+                draw(vertLine, yLine - unitIncrementY, vertLine, yLine + unitIncrementY)
+            }
+            // recursive animation until req met
+            if(xLine <= window.innerWidth && yLine <= window.innerHeight){
+                window.requestAnimationFrame(animate)
+            }
+        }
+        window.requestAnimationFrame(animate)
     },
     createLegend: function(ctx) {
         let width = window.innerWidth / 50;
-        ctx.rect(0, 0, width, window.innerHeight);
-        ctx.rect(0, window.innerHeight - width, window.innerWidth, width);
-        ctx.fillStyle = "#454F5B";
-        ctx.fill();
+        this.ctx.rect(0, 0, width, window.innerHeight);
+        this.ctx.rect(0, window.innerHeight - width, window.innerWidth, width);
+        this.ctx.fillStyle = "#454F5B";
+        this.ctx.fill();
     },
     drawLine: function() {
 
