@@ -18,6 +18,7 @@ const canvasChart = {
     updateCanvas: function() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
+        this.gridOffset = window.innerWidth / 50;
         this.createGridlines()
     },
     createGridlines: function() {
@@ -34,11 +35,14 @@ const canvasChart = {
 
         if (window.innerWidth > 766){
             this.createLegend()
+            this.gridOffset = window.innerWidth / 50;
         }
 
         let xLine = 0; 
         let yLine = 0;
-
+        let offSetHeight = this.canvas.height - this.gridOffset
+        
+        let offSetWidth = this.gridOffset || 0
         function draw(x1, y1, x2, y2) {
             ctx.strokeStyle = "#454F5B";
             ctx.lineWidth = 1;
@@ -51,10 +55,11 @@ const canvasChart = {
         function animate() {
             xLine = xLine + unitIncrementX
             yLine = yLine + unitIncrementY
-            for (let  horzLine = 1;  horzLine < window.innerHeight;  horzLine += gridLineUnitX) {
+            // apply the offest and create grid lines
+            for (let  horzLine = offSetHeight;  horzLine >= 0;  horzLine -= gridLineUnitX) {
                 draw(xLine - unitIncrementX, horzLine, xLine + unitIncrementX, horzLine)
             }
-            for (let  vertLine = 1;  vertLine < window.innerWidth;  vertLine += gridLineUnitY) {
+            for (let vertLine = offSetWidth;  vertLine < this.canvas.width;  vertLine += gridLineUnitY) {
                 draw(vertLine, yLine - unitIncrementY, vertLine, yLine + unitIncrementY)
             }
             // recursive animation until req met
@@ -70,6 +75,7 @@ const canvasChart = {
         this.ctx.rect(0, window.innerHeight - width, window.innerWidth, width);
         this.ctx.fillStyle = "#454F5B";
         this.ctx.fill();
+
     },
     drawLine: function() {
         let ctx = this.canvas.getContext("2d")
@@ -79,7 +85,7 @@ const canvasChart = {
 
         const gridLineUnitX = window.innerWidth / 12;
         const gridLineUnitY = window.innerHeight / 8;
-        const unitIncrement = window.innerWidth / 25;
+        const unitIncrement = window.innerWidth / 300;
         const slope = (window.innerWidth/window.innerHeight);
 
         let xpos= 0
@@ -100,8 +106,11 @@ const canvasChart = {
             console.log(y1,y2)
         }
         function animate(){
-            xpos = xpos + unitIncrement
-            ypos = ypos - unitIncrement
+
+            // this needs to be dynamic
+            // xpos = xpos + unitIncrement
+            // ypos = ypos - unitIncrement
+            
 
             // this needs to be inverted for positive slope
             draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrement)
@@ -109,7 +118,7 @@ const canvasChart = {
                 window.requestAnimationFrame(animate)
             }
         }
-        window.requestAnimationFrame(animate)
+        //window.requestAnimationFrame(animate)
     },
     animateHanlder: function(ratio) {
 
