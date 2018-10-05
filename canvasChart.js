@@ -18,7 +18,7 @@ const canvasChart = {
     updateCanvas: function() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
-        this.gridOffset = window.innerWidth / 50;
+        this.gridOffset = this.canvas.width / 50;
         this.createGridlines()
     },
     createGridlines: function() {
@@ -27,21 +27,21 @@ const canvasChart = {
         ctx.strokeStyle = "#454F5B";
 
         // should be global for other draw line reference
-        let gridLineUnitX = window.innerWidth / 12;
-        let gridLineUnitY = window.innerHeight / 8;
+        let gridLineUnitX = this.canvas.width / 12;
+        let gridLineUnitY = this.canvas.height / 8;
 
-        let unitIncrementX = window.innerWidth / 25;
-        let unitIncrementY = window.innerHeight / 25;
+        let unitIncrementX = this.canvas.width / 25;
+        let unitIncrementY = this.canvas.height / 25;
 
-        if (window.innerWidth > 766){
-            this.createLegend()
-            this.gridOffset = window.innerWidth / 50;
-        }
+       
+        this.createLegend()
+        this.gridOffset = this.canvas.width / 50;
+        
 
         let xLine = 0; 
         let yLine = 0;
         let offSetHeight = this.canvas.height - this.gridOffset
-        
+
         let offSetWidth = this.gridOffset || 0
         function draw(x1, y1, x2, y2) {
             ctx.strokeStyle = "#454F5B";
@@ -63,19 +63,22 @@ const canvasChart = {
                 draw(vertLine, yLine - unitIncrementY, vertLine, yLine + unitIncrementY)
             }
             // recursive animation until req met
-            if(xLine <= window.innerWidth && yLine <= window.innerHeight){
+            if(xLine <= this.canvas.width && yLine <= this.canvas.height){
                 window.requestAnimationFrame(animate)
             }
         }
         window.requestAnimationFrame(animate)
     },
     createLegend: function(ctx) {
-        let width = window.innerWidth / 50;
-        this.ctx.rect(0, 0, width, window.innerHeight);
-        this.ctx.rect(0, window.innerHeight - width, window.innerWidth, width);
+        let width = this.canvas.width / 50;
+        this.ctx.rect(0, 0, width, this.canvas.height);
+        this.ctx.rect(0, this.canvas.height - width, this.canvas.width, width);
         this.ctx.fillStyle = "#454F5B";
         this.ctx.fill();
 
+    },
+    getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
     },
     drawLine: function() {
         let ctx = this.canvas.getContext("2d")
@@ -83,17 +86,22 @@ const canvasChart = {
         ctx.moveTo(0, this.canvas.height);
         ctx.lineTo(this.canvas.width, 0);
 
-        const gridLineUnitX = window.innerWidth / 12;
-        const gridLineUnitY = window.innerHeight / 8;
-        const unitIncrement = window.innerWidth / 300;
-        const slope = (window.innerWidth/window.innerHeight);
+        // grid lines and increments
+        const gridLineUnitX = Math.floor(this.canvas.width / 12);
+        const gridLineUnitY = Math.floor(this.canvas.height / 8);
+        const slope = gridLineUnitX / gridLineUnitY
+        const unitIncrement = 1
+        let unitIncrementY = 1 * slope
 
-        let xpos= 0
-        let ypos = window.innerHeight 
-        // returns the set animation iteration of coords
-        function returnCoords(){
-            
-        }
+
+        let xpos = 0 + Math.floor(this.canvas.width / 50)
+        let ypos = this.canvas.height -  Math.floor(this.canvas.width / 50);
+
+        //need to start with a next planed set of coordinates to be updated with randoms..
+        let targetX = xpos + gridLineUnitY
+        console.log(gridLineUnitX)
+        let lineYCoords = [3, -1, 3, -1, 2, 4, 2, -1, 3, -1, 1]
+
         function draw(x1, y1, x2, y2){
             ctx.strokeStyle = "#9C6ADE";
             ctx.lineWidth = 5;
@@ -102,26 +110,22 @@ const canvasChart = {
             ctx.lineTo(x2, y2);
             ctx.closePath();
             ctx.stroke();
-            console.log(x1,x2)
-            console.log(y1,y2)
         }
         function animate(){
-
-            // this needs to be dynamic
-            // xpos = xpos + unitIncrement
-            // ypos = ypos - unitIncrement
-            
-
+            if(xpos == targetX){
+                targetX = xpos + gridLineUnitY
+                let i = ((xpos - Math.floor(this.canvas.width / 50)) / gridLineUnitY)
+                unitIncrementY = lineYCoords[i] * slope
+            }
+            xpos = xpos + unitIncrement
+            ypos = ypos - unitIncrementY
             // this needs to be inverted for positive slope
-            draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrement)
-            if(xpos <= window.innerWidth){
+            draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrementY)
+            if(xpos <= this.canvas.width){
                 window.requestAnimationFrame(animate)
             }
         }
-        //window.requestAnimationFrame(animate)
-    },
-    animateHanlder: function(ratio) {
-
+        window.requestAnimationFrame(animate)
     }
 
 }
