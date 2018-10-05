@@ -87,38 +87,43 @@ const canvasChart = {
         ctx.lineTo(this.canvas.width, 0);
 
         // grid lines and increments
-        const gridLineUnitX = Math.floor(this.canvas.width / 12);
-        const gridLineUnitY = Math.floor(this.canvas.height / 8);
+        const gridLineUnitX = Math.ceil(Math.floor(this.canvas.width / 12)/5)*5;
+        const gridLineUnitY = Math.ceil(Math.floor(this.canvas.height / 8)/5)*5;
         const slope = gridLineUnitX / gridLineUnitY
-        const unitIncrement = 1
-        let unitIncrementY = 1 * slope
 
+        const unitIncrement = 5
+        let unitIncrementY = 5 * slope
 
-        let xpos = 0 + Math.floor(this.canvas.width / 50)
+        let index = 0
+        let xpos = 0 + Math.ceil(Math.floor(this.canvas.width / 50)/5)*5
         let ypos = this.canvas.height -  Math.floor(this.canvas.width / 50);
 
         //need to start with a next planed set of coordinates to be updated with randoms..
         let targetX = xpos + gridLineUnitY
-        console.log(gridLineUnitX)
-        let lineYCoords = [3, -1, 3, -1, 2, 4, 2, -1, 3, -1, 1]
-
+        // create a pattern
+        let lineYCoords = [2, -1, 3, -1, 4, -2]
         function draw(x1, y1, x2, y2){
             ctx.strokeStyle = "#9C6ADE";
             ctx.lineWidth = 5;
             ctx.beginPath();
+            ctx.lineJoin = 'round';
             ctx.moveTo(x1, y1);
             ctx.lineTo(x2, y2);
             ctx.closePath();
             ctx.stroke();
         }
         function animate(){
+            // always start with the last value to avoid line breaks
+            ypos = ypos - unitIncrementY
             if(xpos == targetX){
+                
+                index < lineYCoords.length - 1 ? ++index : index = 0
                 targetX = xpos + gridLineUnitY
-                let i = ((xpos - Math.floor(this.canvas.width / 50)) / gridLineUnitY)
-                unitIncrementY = lineYCoords[i] * slope
+                console.log(lineYCoords.length, index)
+                unitIncrementY = lineYCoords[index] * slope * unitIncrement
+                console.log(unitIncrementY)
             }
             xpos = xpos + unitIncrement
-            ypos = ypos - unitIncrementY
             // this needs to be inverted for positive slope
             draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrementY)
             if(xpos <= this.canvas.width){
