@@ -21,7 +21,7 @@ const canvasChart = {
             this.drawLine('#9C6ADE', [2, -1, 3, -1, 5, -2], 1)
             this.drawLine('#47C1BF', [1, -1, 2, -1, 3, 1], 0)
         }).then(() => {
-            this.animateLoop()
+            // this.animateLoop()
         })
         this.addHandlers()
     },
@@ -171,6 +171,8 @@ const canvasChart = {
     },
     animateLoop: function() {
         console.log('loop')
+        this.ctx.clearRect(this.legendOffSet, 0, this.canvas.width, (this.canvas.height - this.legendOffSet))
+        
     }
 }
 document.addEventListener("DOMContentLoaded", evt => {
