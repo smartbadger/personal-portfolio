@@ -10,12 +10,13 @@ const canvasChart = {
 
         // should be global for other draw line reference
         this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, 12, 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 8, 5)
+        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 12, 5)
         this.legendOffSet = this.getRoundedNumber(this.canvas.width, 50, 5)
+        this.slope = this.gridLineUnitX / this.gridLineUnitY
 
         this.createGridlinesAndLegend()
-        //this.drawLine('#9C6ADE', [2, -1, 3, -1, 5, -2], 1)
-        //this.drawLine('#47C1BF', [1, -1, 2, -1, 3, 1], 0)
+        this.drawLine('#9C6ADE', [2, -1, 3, -1, 5, -2], 1)
+        this.drawLine('#47C1BF', [1, -1, 2, -1, 3, 1], 0)
         this.addHandlers()
     },
     addHandlers: function() {
@@ -28,8 +29,9 @@ const canvasChart = {
         this.canvas.width = window.innerWidth
         this.canvas.height = window.innerHeight
         this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, 12, 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 8, 5)
+        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 12, 5)
         this.legendOffSet = this.getRoundedNumber(this.canvas.width, 50, 5)
+        this.slope = this.gridLineUnitX / this.gridLineUnitY
 
         this.createGridlinesAndLegend()
     },
@@ -42,11 +44,17 @@ const canvasChart = {
         ctx.strokeStyle = "#454F5B"
 
         this.createLegend()
-        let offSetHeight = this.canvas.height - this.legendOffSet
+        const offSetHeight = (() => {
+            const yPosWithLegend = this.getRoundedNumber(this.canvas.height, 1, 5)
+            const baseY = yPosWithLegend - this.legendOffSet
+            return baseY
+        })()
+        console.log(offSetHeight)
         // setup initial x and y
         let xLine = 0 
         let yLine = 0
 
+        // determines draw speed
         let unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, 10, 5)
         let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, 10, 5)
 
@@ -91,23 +99,28 @@ const canvasChart = {
         let ctx = this.canvas.getContext("2d")
         ctx.moveTo(0, this.canvas.height)
         ctx.lineTo(this.canvas.width, 0)
-
-        // grid lines and increments
-        const gridLineUnitX = Math.ceil(Math.floor(this.canvas.width / 12)/5)*5
-        const gridLineUnitY = Math.ceil(Math.floor(this.canvas.height / 8)/5)*5
-        const slope = gridLineUnitX / gridLineUnitY
-
-        const unitIncrement = 5
-        let unitIncrementY = 5 * slope
-
+        
+        // grid lines and draw speed
+        const unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, 10, 5)
+        let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, 10, 5) * this.slope
+        // starting locations
         let index = 0
-        let xpos = 0 + Math.ceil(Math.floor(this.canvas.width / 50)/5)*5 
-        let ypos = this.canvas.height -  Math.floor(this.canvas.width / 50) - (offset * gridLineUnitY)
+        let xpos = this.legendOffSet
+        let ypos = (() => {
+            const yPosWithLegend = this.getRoundedNumber(this.canvas.height, 1, 5)
+            const baseY = yPosWithLegend - this.legendOffSet
+
+            // adjust for y offeset by adding 1 increment otherwise the lines are 1 unit away from the y axis gridline
+            const offsetY = (baseY - (this.gridLineUnitY * offset)) + unitIncrementY
+            return offsetY
+        })()
+
 
         //need to start with a next planed set of coordinates to be updated with randoms..
-        let targetX = xpos + gridLineUnitY
+        let targetX = xpos + this.gridLineUnitY
+
         // create a pattern
-        function draw(x1, y1, x2, y2){
+        const draw = (x1, y1, x2, y2) => {
             ctx.strokeStyle = color
             ctx.lineWidth = 5
             ctx.beginPath()
@@ -117,20 +130,20 @@ const canvasChart = {
             ctx.closePath()
             ctx.stroke()
         }
-        function animate(){
+        const animate = () => {
             // always start with the last value to avoid line breaks
             ypos = ypos - unitIncrementY
             if(xpos == targetX){
                 
                 index < coords.length - 1 ? ++index : index = 0
-                targetX = xpos + gridLineUnitY
+                targetX = xpos + this.gridLineUnitY
                 //console.log(coords.length, index)
-                unitIncrementY = coords[index] * slope * unitIncrement
+                unitIncrementY = coords[index] * this.slope * unitIncrementX
                 //console.log(unitIncrementY)
             }
-            xpos = xpos + unitIncrement
+            xpos = xpos + unitIncrementX
             // this needs to be inverted for positive slope
-            draw(xpos - unitIncrement, ypos, xpos, ypos - unitIncrementY)
+            draw(xpos - unitIncrementX, ypos, xpos, ypos - unitIncrementY)
             if(xpos <= this.canvas.width){
                 window.requestAnimationFrame(animate)
             }
