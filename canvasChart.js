@@ -41,16 +41,16 @@ const canvasChart = {
         let ctx = this.canvas.getContext("2d")
         ctx.strokeStyle = "#454F5B"
 
-        //this.createLegend()
+        this.createLegend()
         let offSetHeight = this.canvas.height - this.legendOffSet
         // setup initial x and y
         let xLine = 0 
         let yLine = 0
 
-        let unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, 25, 5)
-        let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, 25, 5)
+        let unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, 10, 5)
+        let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, 10, 5)
 
-        function draw(x1, y1, x2, y2) {
+        const draw = (x1, y1, x2, y2) => {
             ctx.strokeStyle = "#454F5B"
             ctx.lineWidth = 1
             ctx.beginPath()
@@ -58,23 +58,21 @@ const canvasChart = {
             ctx.lineTo(x2, y2)
             ctx.closePath()
             ctx.stroke()
-
-            console.log( x1, y1)
         }
         // builds the grid lines 
-        function animate() {
+        const animate = () => {
             xLine = xLine + unitIncrementX
             yLine = yLine + unitIncrementY
 
             // apply the offest and create grid lines
-            for (let  horzLine = offSetHeight;  horzLine >= 0;  horzLine -= this.gridLineUnitX) {
+            for (let  horzLine = offSetHeight;  horzLine >= 0; horzLine -= this.gridLineUnitY) {
                 draw(xLine - unitIncrementX, horzLine, xLine + unitIncrementX, horzLine)
             }
-            for (let vertLine = 0;  vertLine < this.canvas.width;  vertLine += this.gridLineUnitY) {
+            for (let vertLine = this.legendOffSet;  vertLine < this.canvas.width;  vertLine += this.gridLineUnitX) {
                 draw(vertLine, yLine - unitIncrementY, vertLine, yLine + unitIncrementY)
             }
             // recursive animation until req met
-            if(xLine <= this.canvas.width && yLine <= this.canvas.height){
+            if(xLine <= this.canvas.width || yLine <= this.canvas.height){
                 window.requestAnimationFrame(animate)
             }
         }
