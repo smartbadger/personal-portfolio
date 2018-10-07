@@ -9,14 +9,20 @@ const canvasChart = {
         this.ctx = canvas.getContext("2d")
 
         // should be global for other draw line reference
-        this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, 12, 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 12, 5)
+        let windowSlope = this.canvas.width/this.canvas.height
+
+        this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, (this.canvas.width/60), 5)
+        this.gridLineUnitY = this.getRoundedNumber(this.canvas.height, (this.canvas.height/60), 5)
         this.legendOffSet = this.getRoundedNumber(this.canvas.width, 50, 5)
         this.slope = this.gridLineUnitX / this.gridLineUnitY
 
-        this.createGridlinesAndLegend()
-        this.drawLine('#9C6ADE', [2, -1, 3, -1, 5, -2], 1)
-        this.drawLine('#47C1BF', [1, -1, 2, -1, 3, 1], 0)
+        let firstDraw = this.createGridlinesAndLegend()
+        firstDraw.then(()=>{
+            this.drawLine('#9C6ADE', [2, -1, 3, -1, 5, -2], 1)
+            this.drawLine('#47C1BF', [1, -1, 2, -1, 3, 1], 0)
+        }).then(() => {
+            this.animateLoop()
+        })
         this.addHandlers()
     },
     addHandlers: function() {
@@ -29,7 +35,7 @@ const canvasChart = {
         this.canvas.width = window.innerWidth
         this.canvas.height = window.innerHeight
         this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, 12, 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.width, 12, 5)
+        this.gridLineUnitY = this.getRoundedNumber(this.canvas.height, 8, 5)
         this.legendOffSet = this.getRoundedNumber(this.canvas.width, 4, 5)
         console.log(this.legendOffSet)
         this.slope = this.gridLineUnitX / this.gridLineUnitY
@@ -37,62 +43,72 @@ const canvasChart = {
         this.createGridlinesAndLegend()
     },
     getRoundedNumber: function(n, d, c) {
-       return Math.ceil(Math.floor(n /d)/c)*c
+       let number = Math.ceil(Math.floor(n /d)/c)*c 
+       if (number < c) {
+           number = c
+       }
+       console.log(number)
+       return number
     },
     createGridlinesAndLegend: function() {
-        // setup context
-        let ctx = this.canvas.getContext("2d")
-        ctx.strokeStyle = "#454F5B"
-
-        this.createLegend()
-        const offSetHeight = (() => {
-            const yPosWithLegend = this.getRoundedNumber(this.canvas.height, 1, 5)
-            const baseY = yPosWithLegend - this.legendOffSet
-            return baseY
-        })()
-        console.log(offSetHeight)
-        // setup initial x and y
-        let xLine = 0 
-        let yLine = 0
-
-        // determines draw speed
-        let unitIncrementX = (this.canvas.width / 25)
-        let unitIncrementY = (this.canvas.height / 25)
-        const draw = (x1, y1, x2, y2) => {
+        return new Promise ((resolve) => {
+            // setup context
+            let ctx = this.canvas.getContext("2d")
             ctx.strokeStyle = "#454F5B"
-            ctx.lineWidth = 1
-            ctx.beginPath()
-            ctx.moveTo(x1, y1)
-            ctx.lineTo(x2, y2)
-            ctx.closePath()
-            ctx.stroke()
-        }
-        // builds the grid lines 
-        const animate = () => {
-            xLine = xLine + unitIncrementX
-            yLine = yLine + unitIncrementY
 
-            // apply the offest and create grid lines
-            for (let  horzLine = offSetHeight;  horzLine >= 0; horzLine -= this.gridLineUnitY) {
-                draw(xLine - unitIncrementX, horzLine, xLine + unitIncrementX, horzLine)
+            this.createLegend()
+            const offSetHeight = (() => {
+                const yPosWithLegend = this.getRoundedNumber(this.canvas.height, 1, 5)
+                const baseY = yPosWithLegend - this.legendOffSet
+                return baseY
+            })()
+            console.log(offSetHeight)
+            // setup initial x and y
+            let xLine = 0 
+            let yLine = 0
+
+            // determines draw speed
+            let unitIncrementX = (this.canvas.width / 25)
+            let unitIncrementY = (this.canvas.height / 25)
+            const draw = (x1, y1, x2, y2) => {
+                ctx.strokeStyle = "#454F5B"
+                ctx.lineWidth = 1
+                ctx.beginPath()
+                ctx.moveTo(x1, y1)
+                ctx.lineTo(x2, y2)
+                ctx.closePath()
+                ctx.stroke()
             }
-            for (let vertLine = this.legendOffSet;  vertLine < this.canvas.width;  vertLine += this.gridLineUnitX) {
-                let y1 = this.canvas.height - (yLine - unitIncrementY)
-                let y2 = this.canvas.height - (yLine + unitIncrementY)
-                draw(vertLine, y1, vertLine, y2)
+            // builds the grid lines 
+            const animate = () => {
+                xLine = xLine + unitIncrementX
+                yLine = yLine + unitIncrementY
+
+                // apply the offest and create grid lines
+                for (let  horzLine = offSetHeight;  horzLine >= 0; horzLine -= this.gridLineUnitY) {
+                    draw(xLine - unitIncrementX, horzLine, xLine + unitIncrementX, horzLine)
+                }
+                for (let vertLine = this.legendOffSet;  vertLine < this.canvas.width;  vertLine += this.gridLineUnitX) {
+                    let y1 = this.canvas.height - (yLine - unitIncrementY)
+                    let y2 = this.canvas.height - (yLine + unitIncrementY)
+                    draw(vertLine, y1, vertLine, y2)
+                }
+                // recursive animation until req met
+                if(xLine <= this.canvas.width || yLine <= this.canvas.height){
+                    window.requestAnimationFrame(animate)
+                }else{
+                    resolve()
+                }
             }
-            // recursive animation until req met
-            if(xLine <= this.canvas.width || yLine <= this.canvas.height){
-                window.requestAnimationFrame(animate)
-            }
-        }
-        window.requestAnimationFrame(animate)
+            window.requestAnimationFrame(animate)
+        })
     },
     createLegend: function() {
         this.ctx.rect(0, 0, this.legendOffSet, this.canvas.height)
         this.ctx.rect(0, this.canvas.height - this.legendOffSet, this.canvas.width, this.legendOffSet)
         this.ctx.fillStyle = "#454F5B"
         this.ctx.fill()
+        this.ctx.save()
     },
     getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min
@@ -103,8 +119,8 @@ const canvasChart = {
         ctx.lineTo(this.canvas.width, 0)
         
         // grid lines and draw speed
-        const unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, 5, 5)
-        let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, 5, 5) * this.slope
+        const unitIncrementX = this.getRoundedNumber(this.gridLineUnitX, (this.canvas.width/15), 5)
+        let unitIncrementY = this.getRoundedNumber(this.gridLineUnitY, (this.canvas.height/15), 5) * this.slope
         // starting locations
         let index = 0
         // round the start of the xpos so it aligns with the set increment
@@ -152,8 +168,10 @@ const canvasChart = {
             }
         }
         window.requestAnimationFrame(animate)
+    },
+    animateLoop: function() {
+        console.log('loop')
     }
-
 }
 document.addEventListener("DOMContentLoaded", evt => {
     canvasChart.init()
