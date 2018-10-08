@@ -15,8 +15,8 @@ const canvasChart = {
         // should be global for other draw line reference
         let windowSlope = this.canvas.width/this.canvas.height
 
-        this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, (this.canvas.width/60), 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.height, (this.canvas.height/60), 5)
+        this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, (this.canvas.width/80), 5)
+        this.gridLineUnitY = this.getRoundedNumber(this.canvas.height, (this.canvas.height/80), 5)
         this.legendOffSet = this.getRoundedNumber(this.canvas.width, 50, 5)
         this.slope = this.gridLineUnitX / this.gridLineUnitY
 
@@ -39,17 +39,6 @@ const canvasChart = {
                 this.buildCanvas()
             }, 500)
         }, false)
-    },
-    updateCanvas: function() {
-        this.canvas.width = window.innerWidth
-        this.canvas.height = window.innerHeight
-        this.gridLineUnitX = this.getRoundedNumber(this.canvas.width, 12, 5)
-        this.gridLineUnitY = this.getRoundedNumber(this.canvas.height, 8, 5)
-        this.legendOffSet = this.getRoundedNumber(this.canvas.width, 4, 5)
-        console.log(this.legendOffSet)
-        this.slope = this.gridLineUnitX / this.gridLineUnitY
-
-        this.createGridlinesAndLegend()
     },
     getRoundedNumber: function(n, d, c) {
        let number = Math.ceil(Math.floor(n /d)/c)*c 
@@ -80,7 +69,7 @@ const canvasChart = {
             let unitIncrementX = (this.canvas.width / 25)
             let unitIncrementY = (this.canvas.height / 25)
             const draw = (x1, y1, x2, y2) => {
-                ctx.strokeStyle = "#454F5B"
+                ctx.strokeStyle = "#2c3947"
                 ctx.lineWidth = 1
                 ctx.beginPath()
                 ctx.moveTo(x1, y1)
@@ -115,7 +104,7 @@ const canvasChart = {
     createLegend: function() {
         this.ctx.rect(0, 0, this.legendOffSet, this.canvas.height)
         this.ctx.rect(0, this.canvas.height - this.legendOffSet, this.canvas.width, this.legendOffSet)
-        this.ctx.fillStyle = "#454F5B"
+        this.ctx.fillStyle = "#2c3947"
         this.ctx.fill()
         this.ctx.save()
     },
@@ -150,7 +139,7 @@ const canvasChart = {
         // create a pattern
         const draw = (x1, y1, x2, y2) => {
             ctx.strokeStyle = color
-            ctx.lineWidth = 5
+            ctx.lineWidth = 1
             ctx.beginPath()
             ctx.lineJoin = 'round'
             ctx.moveTo(x1, y1)
