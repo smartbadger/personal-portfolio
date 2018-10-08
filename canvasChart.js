@@ -1,5 +1,5 @@
 const canvasChart = {
-    timeout: null,
+    timeout: false,
 
     init: function() {
         const canvas = document.getElementById('canvas')
@@ -34,14 +34,10 @@ const canvasChart = {
             this.canvas.height = window.innerHeight
             this.ctx = canvas.getContext("2d")
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-            if ( !this.timeout ) {
-                this.timeout = setTimeout(() => {
-        
-                    // Reset timeout
-                    this.timeout = null;
-                    this.buildCanvas()
-                }, 500)
-            }
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout( () => { 
+                this.buildCanvas()
+            }, 500)
         }, false)
     },
     updateCanvas: function() {
