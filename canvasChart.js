@@ -1,9 +1,13 @@
 const canvasChart = {
-
+    timeout: null,
 
     init: function() {
         const canvas = document.getElementById('canvas')
         this.canvas = canvas
+        this.buildCanvas()
+        this.addHandlers()
+    },
+    buildCanvas: function() {
         this.canvas.width = window.innerWidth
         this.canvas.height = window.innerHeight
         this.ctx = canvas.getContext("2d")
@@ -23,13 +27,22 @@ const canvasChart = {
         }).then(() => {
             // this.animateLoop()
         })
-        this.addHandlers()
     },
     addHandlers: function() {
         window.addEventListener('resize', (evt) => {
-            //this.updateCanvas()
-            console.log('resize')
-        })
+            this.canvas.width = window.innerWidth
+            this.canvas.height = window.innerHeight
+            this.ctx = canvas.getContext("2d")
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+            if ( !this.timeout ) {
+                this.timeout = setTimeout(() => {
+        
+                    // Reset timeout
+                    this.timeout = null;
+                    this.buildCanvas()
+                }, 500)
+            }
+        }, false)
     },
     updateCanvas: function() {
         this.canvas.width = window.innerWidth
