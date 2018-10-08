@@ -74,21 +74,21 @@ p {
 
 .chart {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column; }
+  height: 100vh; }
   .chart__canvas-wrapper {
-    background: #212B36;
+    background: #212B36; }
+  .chart__title {
     position: absolute;
-    width: 100vw;
-    left: 0;
     top: 0;
-    height: 100%; }
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
   .chart__heading, .chart__subheading {
     color: #fff;
-    position: relative;
     z-index: 1;
     line-height: 1.2; }
   .chart__heading {
