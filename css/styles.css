@@ -77,7 +77,7 @@ p {
   height: 100vh; }
   .chart__canvas-wrapper {
     background: #212B36; }
-  .chart__title {
+  .chart__overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -89,12 +89,14 @@ p {
     flex-direction: column; }
   .chart__heading, .chart__subheading {
     color: #fff;
+    text-align: center;
     z-index: 1;
-    line-height: 1.2; }
+    line-height: 1.2;
+    letter-spacing: 3px; }
   .chart__heading {
-    font-size: 6rem; }
+    font-size: 7rem; }
   .chart__subheading {
-    font-size: 2.3rem; }
+    font-size: 2.6rem; }
 
 .page-section {
   display: block;
