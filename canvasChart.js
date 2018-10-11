@@ -1,6 +1,5 @@
 const canvasChart = {
     timeout: false,
-    height: window.outerHeight,
 
     init: function() {
         const canvas = document.getElementById('canvas')
@@ -31,18 +30,15 @@ const canvasChart = {
     },
     addHandlers: function() {
         window.addEventListener('resize', (evt) => {
-            if(window.outerHeight != this.height){
-                this.height = window.outerHeight
-                this.canvas.width = window.innerWidth
-                this.canvas.height = window.innerHeight
-                this.ctx = canvas.getContext("2d")
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-                clearTimeout(this.timeout)
-                this.timeout = setTimeout( () => { 
-                    this.buildCanvas()
-                }, 500)
-            }
-
+            if(window.innerWidth >= 768){
+            this.canvas.width = window.innerWidth
+            this.canvas.height = window.innerHeight
+            this.ctx = canvas.getContext("2d")
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout( () => { 
+                this.buildCanvas()
+            }, 500)
         }, false)
     },
     getRoundedNumber: function(n, d, c) {
