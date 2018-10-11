@@ -39,6 +39,7 @@ const canvasChart = {
             this.timeout = setTimeout( () => { 
                 this.buildCanvas()
             }, 500)
+            }
         }, false)
     },
     getRoundedNumber: function(n, d, c) {
