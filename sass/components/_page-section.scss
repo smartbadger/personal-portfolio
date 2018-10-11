@@ -14,6 +14,8 @@
         display: block;
         text-align: center;
         &--alt {
+            position: relative;
+            z-index: 5;
             display: block;
             text-align: center;
             background: $lt-ink;
@@ -31,5 +33,19 @@
 }
 
 .project-background {
-    background: $ink;
+    
+    background: repeating-linear-gradient(transparent, transparent 97px, rgba($teal, 0.8) 98px, transparent 100px),
+                repeating-linear-gradient(to right, transparent, transparent 97px, rgba($purple, 0.8) 98px, transparent 100px);
+    background-color:$ink;
+    &::before{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: $ink;
+        opacity: 0;
+        will-change: opacity;
+        animation: pulse 2s ease-in-out infinite alternate;
+    }
 }
