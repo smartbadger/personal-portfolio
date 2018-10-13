@@ -16,7 +16,6 @@ const animationManager = {
         window.addEventListener("resize", this.init)
     },
     checkPos: function() {
-        console.log(posFromTop - animationManager.windowHeight)
         for( var i = 0; i < animationManager.elements.length; i ++){
             var posFromTop = animationManager.elements[i].getBoundingClientRect().top;
             if ( posFromTop - animationManager.windowHeight <= (0 - animationManager.windowHeight/3)) { 
