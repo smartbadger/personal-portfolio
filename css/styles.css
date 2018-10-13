@@ -5,6 +5,20 @@
 1800px + larger desktop (112.5em)
 
 */
+.animation__slide-in {
+  will-change: transform;
+  transform: translateX(-100vw);
+  transition: 1s; }
+  .animation__slide-in.active {
+    transform: translateX(0); }
+
+.animation__fade-in {
+  will-change: opacity;
+  opacity: 0;
+  transition: 1s; }
+  .animation__fade-in.active {
+    opacity: 1; }
+
 @keyframes pulse {
   from {
     opacity: 0; }
