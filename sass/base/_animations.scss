@@ -1,3 +1,22 @@
+.animation {
+    &__slide-in {
+        will-change: transform;
+        transform: translateX(-100vw);
+        transition: 1s;
+        &.active {
+            transform: translateX(0);
+        }
+    }
+    &__fade-in {
+        will-change: opacity;
+        opacity: 0;
+        transition: 1s;
+        &.active {
+            opacity: 1;
+        }
+    }
+}
+
 @keyframes pulse {
     from {
         opacity: 0;

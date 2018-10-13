@@ -1,14 +1,59 @@
 .icon-container {
+    position: relative;
     @include flex-container(space-between, flex-end);
     @include media(phoneXL) {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+    }
+    &::before {
+        @include background;
+        @include media(phoneXL){
+            display: none;
+        }
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
     }
     .icon-item {
-        margin: 4rem 0;
+        margin: 2rem 0;
+        padding: 1rem 0;
+        color: $white;
+        &:nth-child(even)::before{
+            @include media(phoneXL){
+                @include background($teal);
+                left: -100vw;
+            }
+        }
+        &:nth-child(odd)::before{
+            @include media(phoneXL){
+             @include background($purple);
+                left: -100vw;
+            }
+        }
+        & > * {
+            position: relative;
+            z-index: 2;
+        }
         svg{
             display: block;
             margin: auto;
+            * {
+                stroke: $white;
+            }
+        }
+        &__text {
+            margin-top: 2rem;
+            white-space: nowrap;
+        }
+        $elements: 4;
+        @for $i from 0 to $elements {
+            @include media(phoneXL){
+                &:nth-child(#{$i + 1}) {
+                    padding-left: calc(25% * #{$i})
+                }
+            }
         }
     }
 }

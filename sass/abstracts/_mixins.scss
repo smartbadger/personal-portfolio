@@ -82,3 +82,15 @@
         padding: 0 1rem;
     }
 }
+
+@mixin background($color: $purple) {
+    content: "";
+    display: block;
+    position: absolute;
+    background: $color;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    right: -2rem;
+    box-shadow: 3px 3px 11px rgba($ink, 0.5);
+}

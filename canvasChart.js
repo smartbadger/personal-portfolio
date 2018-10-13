@@ -47,7 +47,6 @@ const canvasChart = {
        if (number < c) {
            number = c
        }
-       console.log(number)
        return number
     },
     createGridlinesAndLegend: function() {
@@ -62,7 +61,6 @@ const canvasChart = {
                 const baseY = yPosWithLegend - this.legendOffSet
                 return baseY
             })()
-            console.log(offSetHeight)
             // setup initial x and y
             let xLine = 0 
             let yLine = 0
@@ -137,7 +135,6 @@ const canvasChart = {
 
         //need to start with a next planed set of coordinates to be updated with randoms..
         let targetX = xpos + this.gridLineUnitX
-        console.log(targetX, xpos, unitIncrementX, this.gridLineUnitX)
         // create a pattern
         const draw = (x1, y1, x2, y2) => {
             ctx.strokeStyle = color
@@ -156,9 +153,7 @@ const canvasChart = {
             if(xpos >= targetX){
                 index < coords.length - 1 ? ++index : index = 0
                 targetX = xpos + this.gridLineUnitY
-                //console.log(coords.length, index)
                 unitIncrementY = coords[index] * this.slope * unitIncrementX
-                //console.log(unitIncrementY)
             }
             xpos = xpos + unitIncrementX
             // this needs to be inverted for positive slope
@@ -170,7 +165,6 @@ const canvasChart = {
         window.requestAnimationFrame(animate)
     },
     animateLoop: function() {
-        console.log('loop')
         this.ctx.clearRect(this.legendOffSet, 0, this.canvas.width, (this.canvas.height - this.legendOffSet))
         
     }
