@@ -121,7 +121,7 @@ p {
       bottom: 2rem; }
   .chart__slide {
     will-change: transform;
-    animation: slide 1s ease-in-out 3s 1 normal forwards; }
+    animation: slide 1s ease-in-out 4s 1 normal forwards; }
 
 .page-section {
   display: block;
