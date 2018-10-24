@@ -23,13 +23,13 @@
         &:nth-child(even)::before{
             @include media(phoneXL){
                 @include background($teal);
-                left: -150%;
+                left: -100vw;
             }
         }
         &:nth-child(odd)::before{
             @include media(phoneXL){
              @include background($purple);
-                left: -150%;
+                left: -100vw;
             }
         }
         & > * {
