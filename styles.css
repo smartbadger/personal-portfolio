@@ -7,13 +7,13 @@
 */
 .animation__slide-in {
   will-change: transform;
-  -webkit-transform: translateX(-100vw);
-          transform: translateX(-100vw);
+  -webkit-transform: translateX(-150%);
+          transform: translateX(-150%);
   -webkit-transition: 1s;
   transition: 1s; }
   .animation__slide-in.active {
-    -webkit-transform: translateX(0);
-            transform: translateX(0); }
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%); }
 
 .animation__fade-in {
   will-change: opacity;
@@ -502,7 +502,7 @@ p {
         right: -2rem;
         -webkit-box-shadow: 3px 3px 11px rgba(33, 43, 54, 0.5);
                 box-shadow: 3px 3px 11px rgba(33, 43, 54, 0.5);
-        left: -100vw; } }
+        left: -150%; } }
     @media (max-width: 56.25em) {
       .icon-container .icon-item:nth-child(odd)::before {
         content: "";
@@ -515,7 +515,7 @@ p {
         right: -2rem;
         -webkit-box-shadow: 3px 3px 11px rgba(33, 43, 54, 0.5);
                 box-shadow: 3px 3px 11px rgba(33, 43, 54, 0.5);
-        left: -100vw; } }
+        left: -150%; } }
     .icon-container .icon-item > * {
       position: relative;
       z-index: 2; }
