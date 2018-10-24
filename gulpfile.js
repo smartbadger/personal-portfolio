@@ -23,7 +23,7 @@ gulp.task('sass', function () {
         .pipe(autoprefixer({
             browsers: ['last 2 version']
         }))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./css/'))
 })
 
 
